@@ -97,10 +97,46 @@
             color: #fff;
             fill: #fff;
         }
-        .nav{
-          border-radius:100px;
-          min-hight:100px;
-          background:#071D30;
+        .nav {
+            margin-top: 30px;
+            background-color: #071D30;
+            padding: 0px 10px;
+            border-radius: 50px;
+            color: #fff;
+            font-family: poppins;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav div ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            font-size: 15px;
+            padding: 5px 20px;
+        }
+        .nav div ul li{
+            cursor: pointer;
+        }
+        .nav div ul li:hover{
+            color: #f5f5f5;
+        }
+
+        .nav .search {
+            height: 45px;
+            background-color: #fff;
+            min-width: 200px;
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 0px 20px;
+            
+        }
+        .nav .search input{
+            border: none !important;
+            outline: none !important;
+            height: 100%;
+            width: 100%;
         }
 </style>
 
@@ -165,6 +201,19 @@
                   </div>
                 </div>
             </div>
-            <div class="row mt-5 p-3 nav">hi</div>
+            <div class="row mt-5 p-3 nav">
+              <div>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Collections</li>
+                    <li>Blogs</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="search" placeholder="Search for Product">
+            </div>
+            </div>
         </div>
     </div>
