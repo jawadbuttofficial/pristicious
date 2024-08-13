@@ -6,7 +6,19 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
-     }
+     },
+    {
+      "type": "checkbox",
+      "id": "enable_policies",
+      "label": "Enable Free Shipping and mony back garenty policy",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_currency",
+      "label": "Enable currency Switcher",
+      "default": true
+    }
   ],
   "presets": [
     {
@@ -24,9 +36,16 @@
                  <img src="{{ settings.logo | img_url: '160x' }}" height="auto" alt="Logo">
                 </div>
                 <div class="col-lg-9 d-flex align-items-center justify-content-end" style="gap:10rem;">
-                  <div>01</div>
-                  <div>02</div>
-                  <div>03</div>
+                  
+                  {% if section.settings.enable_policies %}
+                    <div class="policies">policies</div>
+                  {% endif %}
+
+                  {% if section.settings.enable_policies %}
+                    <div class="currency">currency</div>
+                  {% endif %}
+                  
+                  <div class="actions">actions</div>
                 </div>
             </div>
         </div>
