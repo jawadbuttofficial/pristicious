@@ -30,6 +30,7 @@
     },
     "header": {
       "type": "header",
+      "disabled": true,
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
@@ -50,6 +51,9 @@
     "header_pristicious_b4KmWB": {
       "type": "Header-Pristicious",
       "settings": {
+        "enable_policies": true,
+        "free_shipping_price": "$150",
+        "enable_currency": true
       }
     }
   },
