@@ -1,13 +1,188 @@
-{% schema %}
-  {
-    "name": "Section name",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "Logo",
-        "label": "Site Logo",
-        "info": "Site Logo"
-      }
-    ]
-  }
-{% endschema %}
+<style>
+        .header {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .header-pristicious {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+        }
+
+        .logo {
+            grid-area: 1 / 1 / 2 / 4;
+        }
+
+        .actions {
+            grid-area: 1 / 4 / 2 / 13;
+            display: flex;
+            justify-content: flex-end;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 200px;
+            height: auto;
+        }
+
+        .policies {
+            display: flex;
+            gap: 40px;
+        }
+
+        .policies p {
+            font-family: poppins;
+            font-size: 10px;
+            font-weight: 500;
+
+        }
+
+        .policies .policy {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .policies img {
+            width: 45px;
+        }
+
+        .actions .action-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .actions .action-links div {
+            height: 45px;
+            width: 45px;
+            background-color: #f5f5f5;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+        }
+
+        .actions .action-links div i {
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .actions .action-links div:hover {
+            background-color: black;
+            cursor: pointer;
+        }
+
+        .actions .action-links div:hover i {
+            stroke: #fff;
+            color: #fff;
+            fill: #fff;
+        }
+
+        nav {
+            margin-top: 30px;
+            background-color: #071D30;
+            padding: 0px 10px;
+            border-radius: 50px;
+            color: #fff;
+            font-family: poppins;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav div ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            font-size: 15px;
+            padding: 5px 20px;
+        }
+        nav div ul li{
+            cursor: pointer;
+        }
+        nav div ul li:hover{
+            color: #f5f5f5;
+        }
+
+        nav .search {
+            height: 45px;
+            background-color: #fff;
+            min-width: 200px;
+            border-radius: 50px;
+            overflow: hidden;
+            padding: 0px 20px;
+            
+        }
+        nav .search input{
+            border: none !important;
+            outline: none !important;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+
+
+
+<header class="header">
+        <div class="header-pristicious">
+            <div class="logo">
+                <img src="https://vinova-urbanist.myshopify.com/cdn/shop/files/logo.png?v=1721981370" alt="">
+            </div>
+            <div class="actions">
+                <div class="policies">
+                    <div class="policy">
+                        <div class="p-icon"><img
+                                src="https://vinova-urbanist.myshopify.com/cdn/shop/files/back.svg?v=1721355351"></div>
+                        <div class="p-text">
+                            <p>MONEY BACK <br>GUARANTEED</p>
+                        </div>
+                    </div>
+                    <div class="policy">
+                        <div class="p-icon"><img
+                                src="https://vinova-urbanist.myshopify.com/cdn/shop/files/delivery-truck.svg?v=1721265126">
+                        </div>
+                        <div class="p-text">
+                            <p>FREE DELIVERY FROM <br>OVER ORDER $ 250</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="currency">
+                    currency Switcher
+                </div>
+                <div class="action-links">
+                    <div>
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <div>
+                        <i class="bi bi-heart"></i>
+                    </div>
+                    <div>
+                        <i class="bi bi-bag"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Collections</li>
+                    <li>Blogs</li>
+                    <li>Contact Us</li>
+                </ul>
+            </div>
+            <div class="search">
+                <input type="search" placeholder="Search for Product....">
+            </div>
+        </nav>
+
+    </header>
