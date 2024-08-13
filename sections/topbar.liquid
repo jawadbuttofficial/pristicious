@@ -39,6 +39,26 @@
       "id": "text_content",
       "label": "Text Content",
       "default": "Your centered text here"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_button",
+      "label": "Enable Shop Now Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "text_button",
+      "label": "Button Label",
+      "default": "Shop Now",
+      "info": "This setting is only visible if 'Enable Shop Now Button' is checked."
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections",
+      "info": "This setting is only visible if 'Enable Shop Now Button' is checked."
     }
   ],
   "presets": [
@@ -50,9 +70,15 @@
 }
 {% endschema %}
 
-
 <div style="background-color: {{ section.settings.background_color }}; font-size: {{ section.settings.font_size }}px;">
   <div style="text-align: {{ section.settings.text_alignment }}; margin:auto; color: {{ section.settings.text_color }}; max-width:1200px;">
     {{ section.settings.text_content }}
+    {% if section.settings.enable_button %}
+      <div style="margin-top: 20px;">
+        <a href="{{ section.settings.button_link }}" style="display: inline-block; padding: 10px 20px; background-color: {{ section.settings.text_color }}; color: #FFFFFF; text-decoration: none; border-radius: 5px;">
+          {{ section.settings.text_button }}
+        </a>
+      </div>
+    {% endif %}
   </div>
 </div>
