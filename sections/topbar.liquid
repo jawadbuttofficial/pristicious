@@ -30,6 +30,22 @@
     },
     {
       "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 1,
+"unit": "px",
+"label": "Padding top",
+"default": 36
+    },
+    {
+      "type": "color",
       "id": "background_color",
       "label": "Background Color",
       "default": "#FFFFFF"
@@ -74,7 +90,7 @@
   <div style="text-align: {{ section.settings.text_alignment }}; margin:auto; color: {{ section.settings.text_color }}; max-width:1200px;">
     {{ section.settings.text_content }}
     {% if section.settings.enable_button %}
-      <a href="{{ section.settings.button_link }}" style="display: inline-block; background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }}; text-decoration: underline; ">
+      <a href="{{ section.settings.button_link }}" style="display: inline-block; background-color: {{ section.settings.background_color }}; color: {{ section.settings.button_text_color }}; text-decoration: underline; ">
           {{ section.settings.text_button }}
         </a>
     {% endif %}
