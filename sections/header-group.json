@@ -19,11 +19,11 @@
       "settings": {
         "text_alignment": "center",
         "text_color": "#242833",
-        "button_text_color": "#000000",
-        "padding_left": 28,
+        "button_text_color": "#11b387",
         "background_color": "#ecffda",
-        "text_content": "Unlock Unbelievable Discounts This Black Friday",
+        "padding_left": 28,
         "enable_button": true,
+        "text_content": "Unlock Unbelievable Discounts This Black Friday",
         "text_button": "Shop Now",
         "button_link": "shopify:\/\/collections"
       }
