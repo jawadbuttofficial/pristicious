@@ -20,7 +20,10 @@
         "text_alignment": "center",
         "text_color": "#242833",
         "background_color": "#ecffda",
-        "text_content": "Unlock Unbelievable Discounts This Black Friday"
+        "text_content": "Unlock Unbelievable Discounts This Black Friday",
+        "enable_button": true,
+        "text_button": "Shop Now",
+        "button_link": "shopify:\/\/collections"
       }
     },
     "header": {
