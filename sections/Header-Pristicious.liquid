@@ -29,6 +29,36 @@
 }
 {% endschema %}
 
+<style>
+  .policies {
+            display: flex;
+            gap: 40px;
+        }
+
+        .policies p {
+            font-family: poppins;
+            font-size: 10px;
+            font-weight: 500;
+
+        }
+
+        .policies .policy {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .policies img {
+            width: 45px;
+        }
+
+        .actions .action-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+</style>
+
 <div class="header-pretious">
         <div class="container">
             <div class="row p-3">
@@ -38,7 +68,23 @@
                 <div class="col-lg-9 d-flex align-items-center justify-content-end" style="gap:10rem;">
                   
                   {% if section.settings.enable_policies %}
-                    <div class="policies">policies</div>
+                    <div class="policies">
+                      <div class="policy">
+                        <div class="p-icon"><img
+                                src="https://vinova-urbanist.myshopify.com/cdn/shop/files/back.svg?v=1721355351"></div>
+                        <div class="p-text">
+                            <p>MONEY BACK <br>GUARANTEED</p>
+                        </div>
+                    </div>
+                    <div class="policy">
+                        <div class="p-icon"><img
+                                src="https://vinova-urbanist.myshopify.com/cdn/shop/files/delivery-truck.svg?v=1721265126">
+                        </div>
+                        <div class="p-text">
+                            <p>FREE DELIVERY FROM <br>OVER ORDER $ 250</p>
+                        </div>
+                    </div>
+                    </div>
                   {% endif %}
 
                   {% if section.settings.enable_currency %}
