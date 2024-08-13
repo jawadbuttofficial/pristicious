@@ -7,7 +7,23 @@
       "type": "image_picker",
       "id": "footer_logo",
       "label": "Logo"
-     }
+     },
+    {
+      "type": "select",
+      "id": "text_or_image",
+      "label": "What you want to show",
+      "default": "show_text",
+      "options": [
+        {
+          "value": "show_text",
+          "label": "Text"
+        },
+        {
+          "value": "show_logo",
+          "label": "image"
+        }
+      ]
+    }
   ]
  }
   
@@ -15,7 +31,13 @@
 <footer class="p-5">
   <div class="container">
             <div class="row">
-                <div class="col-lg-4"><img src="{{ section.settings.footer_logo | img_url }}"; width=200px; height="auto" / ></div>
+                <div class="col-lg-4">
+                  {% if section.settings.text_or_image == 'show_logo' %}
+                  <img src="{{ section.settings.footer_logo | image_url }}" width="200" height="auto" />
+                {% elsif section.settings.text_or_image == 'show_text' %}
+                  <h3>{{ section.settings.footer_text }}</h3>
+                {% endif %}
+                </div>
                 <div class="col-lg-8">
                     <div class="row">
                         <div class="col-lg-4">links 01</div>
