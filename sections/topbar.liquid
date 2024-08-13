@@ -1,6 +1,55 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Centered Text Section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "text_content",
+      "label": "Text Content",
+      "default": "Your centered text here"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Centered Text",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
+
+<div style="text-align: {{ section.settings.text_alignment }}; color: {{ section.settings.text_color }}; background-color: {{ section.settings.background_color }}; padding: 20px;">
+  {{ section.settings.text_content }}
+</div>
