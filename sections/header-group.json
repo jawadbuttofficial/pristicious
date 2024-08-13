@@ -46,10 +46,16 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "header_pristicious_b4KmWB": {
+      "type": "Header-Pristicious",
+      "settings": {
+      }
     }
   },
   "order": [
     "topbar_CTP3Aw",
-    "header"
+    "header",
+    "header_pristicious_b4KmWB"
   ]
 }
