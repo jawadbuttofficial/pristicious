@@ -19,6 +19,8 @@
       "settings": {
         "text_alignment": "center",
         "text_color": "#242833",
+        "button_text_color": "#000000",
+        "padding_left": 28,
         "background_color": "#ecffda",
         "text_content": "Unlock Unbelievable Discounts This Black Friday",
         "enable_button": true,
