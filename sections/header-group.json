@@ -14,7 +14,7 @@
     "topbar_CTP3Aw": {
       "type": "topbar",
       "custom_css": [
-        "div {\/* padding: 10px !important; *\/ font-weight: 600 !important; font-size: 13px; font-family: poppins;}"
+        "div {padding: 5px !important; font-weight: 600 !important; font-size: 13px; font-family: poppins;}"
       ],
       "settings": {
         "text_alignment": "center",
