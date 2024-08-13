@@ -29,6 +29,12 @@
       "label": "Company Name",
       "id": "footer_text",
       "default": "Pritious"
+    },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "desc",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer convallis vulputate sapien, eget ultrices magna imperdiet eget. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
     }
     
   ]
@@ -42,8 +48,11 @@
                   {% if section.settings.text_or_image == 'show_logo' %}
                   <img src="{{ section.settings.footer_logo | image_url }}" width="200" height="auto" />
                 {% elsif section.settings.text_or_image == 'show_text' %}
-                  <h3>{{ section.settings.footer_text }}</h3>
+                  <h2>{{ section.settings.footer_text }}</h2>
                 {% endif %}
+                  <p>
+                    {{ section.settings.desc }}
+                  </p>
                 </div>
                 <div class="col-lg-8">
                     <div class="row">
