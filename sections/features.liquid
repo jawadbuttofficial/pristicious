@@ -2,7 +2,7 @@
 <div class="container">
   <div class="row">
     {% for block in section.blocks %}
-      <div class="col-lg-3 col-md-6 col-sm-12 d-flex gap-2 align-items-center features-sec">
+      <div class="col-lg-3 col-md-6 col-sm-12 d-flex gap-3 align-items-center features-sec">
         <img src="{{ block.settings.image | image_url }}" width="30px" alt="">
         <p class="feature-text m-0">{{ block.settings.text }}</p>
       </div>
