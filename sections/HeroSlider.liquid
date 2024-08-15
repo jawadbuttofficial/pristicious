@@ -1,6 +1,60 @@
+<!-- custom-slider.liquid -->
+<div class="container">
+  <div class="row">
+    <div class="slider">
+      {% for block in section.blocks %}
+        <div>
+          <div class="slide-image" style="background-image: url({{ block.settings.background_image | img_url: '768x' }});"></div>
+          <div class="slide-content">
+            <p>{{ block.settings.text }}</p>
+            <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Custom Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Slide Text"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_url",
+          "label": "Button URL",
+          "default": "/"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
