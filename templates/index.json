@@ -22,22 +22,22 @@
         "feature_iPNdrF": {
           "type": "feature",
           "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
+            "image": "shopify:\/\/shop_images\/secure-payment_200x_3e9868ec-f449-4c83-addd-6d1c62e08a96.png",
+            "text": "SECURED PAYMENT GATEWAY"
           }
         },
         "feature_aPfJLc": {
           "type": "feature",
           "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
+            "image": "shopify:\/\/shop_images\/return-box_200x_6a5502a7-f956-45b6-925e-5d9429e4701a.svg",
+            "text": "30 DAYS RETURN POLICY"
           }
         },
         "feature_hztENk": {
           "type": "feature",
           "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
+            "image": "shopify:\/\/shop_images\/phone_200x_2fac6501-9b10-4dcb-b65d-e9ca8981b051.svg",
+            "text": "CUSTOMER SUPPORT 24\/7"
           }
         }
       },
