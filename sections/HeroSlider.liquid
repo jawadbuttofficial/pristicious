@@ -4,12 +4,9 @@
     <div class="slider">
       {% for block in section.blocks %}
         <div>
-          {% if block.settings.background_image %}
             <div class="slide-image" style="background-image: url({{ block.settings.background_image | img_url: "orignal" }});"></div>
-          {% else %}
             <div class="slide-image" style="background-color: #ddd;"></div>
-          {% endif %}
-          <div class="slide-content">
+            <div class="slide-content">
             <p>{{ block.settings.text }}</p>
             <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
           </div>
