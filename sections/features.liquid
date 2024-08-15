@@ -3,13 +3,18 @@
   <div class="row">
     {% for block in section.blocks %}
       <div class="col-lg-3 col-md-6 col-sm-12 d-flex">
-        <img src="{{ block.settings.image | image_url }}" width="20px" alt="">
-        <p>{{ block.settings.text }}</p>
+        <img src="{{ block.settings.image | image_url }}" width="30px" alt="">
+        <p class="feature-text">{{ block.settings.text }}</p>
       </div>
     {% endfor %}
   </div>
 </div>
 
+<style>
+  .feature-text{
+    font-size:14px;
+  }
+</style>
 {% schema %}
 {
   "name": "Features",
