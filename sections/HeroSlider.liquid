@@ -15,6 +15,66 @@
   </div>
 </div>
 
+<style>
+  .slider {
+            padding: 20px;
+        }
+
+        .slider .slick-slide {
+            position: relative;
+            margin: 0 10px;
+            min-height: 650px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .slider .slick-slide .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            color: #fff;
+            z-index: 1;
+        }
+        .slider .slick-slide .slide-content p{
+            font-weight: 700;
+            font-size: 18px;
+        }
+        .slider .slick-slide .slide-content a{
+            padding: 10px 20px;
+            background-color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 14px;
+        }
+        .slider .slick-slide .slide-content a:hover{
+            background-color: #f5f5f5;
+        }
+        .slider .slick-slide .slide-image {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: 1s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: auto;
+        }
+
+        .slider .slick-slide:hover .slide-image {
+            width: 105%;
+            height: 105%;
+        }
+</style>
+
 {% schema %}
 {
   "name": "Custom Slider",
