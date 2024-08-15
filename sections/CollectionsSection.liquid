@@ -1,6 +1,91 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "Collection List",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Collection description goes here."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL",
+          "default": "/"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text",
+          "default": "Image Alt Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection",
+      "category": "Custom"
+    }
+  ]
+}
 {% endschema %}
+
+
+<!-- collection-list.liquid -->
+<div class="container collections overflow-hidden">
+    <div class="row">
+        {% for block in section.blocks %}
+            <div class="col col-lg-3 col-md-6 col-sm-6 col-xsm-12">
+                <a href="{{ block.settings.link }}" class="collection-img">
+                    <img src="{{ block.settings.image | img_url: '380x' }}" alt="{{ block.settings.alt_text }}">
+                </a>
+                <h2>{{ block.settings.title }}</h2>
+                <p>{{ block.settings.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+    .collections h2 {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: poppins;
+        text-align: center;
+        margin-top: 10px;
+    }
+    .collections p {
+        font-family: poppins;
+        font-size: 14px;
+        text-align: center;
+    }
+    .collections .col {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-width: 200px;
+        padding: 10px 40px;
+    }
+    a.collection-img img {
+        width: 100%;
+        border-radius: 500px;
+    }
+</style>
