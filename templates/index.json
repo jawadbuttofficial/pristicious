@@ -9,6 +9,47 @@
 */
 {
   "sections": {
+    "features_mYUJkK": {
+      "type": "features",
+      "blocks": {
+        "feature_rkpMnR": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
+            "text": "EXPRESS DELIVERY SERVICE"
+          }
+        },
+        "feature_iPNdrF": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
+            "text": "EXPRESS DELIVERY SERVICE"
+          }
+        },
+        "feature_aPfJLc": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
+            "text": "EXPRESS DELIVERY SERVICE"
+          }
+        },
+        "feature_hztENk": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
+            "text": "EXPRESS DELIVERY SERVICE"
+          }
+        }
+      },
+      "block_order": [
+        "feature_rkpMnR",
+        "feature_iPNdrF",
+        "feature_aPfJLc",
+        "feature_hztENk"
+      ],
+      "settings": {
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -219,56 +260,15 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "features_mYUJkK": {
-      "type": "features",
-      "blocks": {
-        "feature_rkpMnR": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
-          }
-        },
-        "feature_iPNdrF": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
-          }
-        },
-        "feature_aPfJLc": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
-          }
-        },
-        "feature_hztENk": {
-          "type": "feature",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/fast-delivery_200x_b498e947-d75b-459c-9a70-0a0ab52ba966.svg",
-            "text": "EXPRESS DELIVERY SERVICE"
-          }
-        }
-      },
-      "block_order": [
-        "feature_rkpMnR",
-        "feature_iPNdrF",
-        "feature_aPfJLc",
-        "feature_hztENk"
-      ],
-      "settings": {
-      }
     }
   },
   "order": [
+    "features_mYUJkK",
     "image_banner",
     "rich_text",
     "featured_collection",
     "collage",
     "video",
-    "multicolumn",
-    "features_mYUJkK"
+    "multicolumn"
   ]
 }
