@@ -142,11 +142,29 @@
       "settings": {
         "padding_top": 70
       }
+    },
+    "cta01_FaEYJJ": {
+      "type": "CTA01",
+      "settings": {
+        "Card_01_image": "shopify:\/\/shop_images\/wooden-table-with-a-scale-and-pour-over-coffee.jpg",
+        "button_01_text": "Shop Now",
+        "button_01_url": "\/",
+        "Card_02_image": "shopify:\/\/shop_images\/a-close-up-of-black-microphone.jpg",
+        "button_02_text": "Shop Now",
+        "button_02_url": "\/",
+        "Card_03_image": "shopify:\/\/shop_images\/portrait-of-illuminated-laptop.jpg",
+        "button_03_text": "Shop Now",
+        "button_03_url": "\/",
+        "Card_04_image": "shopify:\/\/shop_images\/organized-workspace.jpg",
+        "button_04_text": "Shop Now",
+        "button_04_url": "\/"
+      }
     }
   },
   "order": [
     "features_mYUJkK",
     "hero_slider_hcMaeJ",
-    "collections_section_3Xpamg"
+    "collections_section_3Xpamg",
+    "cta01_FaEYJJ"
   ]
 }
