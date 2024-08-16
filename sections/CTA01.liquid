@@ -107,6 +107,18 @@
     background-size: cover;
     background-position: center;
     border-radius: 20px;
+    overflow:hidden;
+  }
+  .CTA01_Card img{
+    min-height:300px;
+    width:100%;
+    object-fit:cover;
+    object-position:center;
+    margin-bottom:-100px;
+    transition:0.5s;
+  }
+  .CTA01_Card img:hover{
+    scale:1.2;
   }
   .CTA01-col-middle {
     display: flex;
@@ -131,7 +143,8 @@
 
 <div class="container">
   <div class="row " style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{section.settings.padding_bottom }}px;">
-    <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
+    <div class="col-lg-4 CTA01_Card">
+        <img src="{{ section.settings.Card_01_image | image_url }}" width="100%" height="100%" alt="">
       <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
     </div>
     <div class="col-lg-4 CTA01-col-middle">
