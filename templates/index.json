@@ -118,8 +118,7 @@
     "cta01_FaEYJJ": {
       "type": "CTA01",
       "custom_css": [
-        "div {transition: background .5s ease-in-out !important;}",
-        "div:hover {background-size: 160%;}"
+
       ],
       "settings": {
         "padding_top": 50,
