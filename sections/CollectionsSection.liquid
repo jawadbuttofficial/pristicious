@@ -58,44 +58,68 @@
 }
 {% endschema %}
 
-
 <!-- collection-list.liquid -->
 <div class="container collections overflow-hidden" style="padding-top:{{ section.settings.padding_top }}px;">
-    <div class="row">
-        {% for block in section.blocks %}
-            <div class="col col-lg-3 col-md-4 col-sm-6 col-xsm-12">
-                <a href="{{ block.settings.link }}" class="collection-img">
-                    <img src="{{ block.settings.image | img_url: '380px' }}" alt="{{ block.settings.alt_text }}">
-                </a>
-                <h2>{{ block.settings.title }}</h2>
-                <p>{{ block.settings.description }}</p>
-            </div>
-        {% endfor %}
-    </div>
+  <div class="collections-Sec-row">
+    {% for block in section.blocks %}
+      <div class="col">
+        <a href="{{ block.settings.link }}" class="collection-img">
+          <img src="{{ block.settings.image | img_url: '380px' }}" alt="{{ block.settings.alt_text }}">
+        </a>
+        <h2>{{ block.settings.title }}</h2>
+        <p>{{ block.settings.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 <style>
-    .collections h2 {
-        font-size: 20px;
-        font-weight: 600;
-        font-family: poppins;
-        text-align: center;
-        margin-top: 10px;
+  .collections-Sec-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+  @media (min-width: 992px) { 
+    .collections-Sec-row{
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 1fr);
     }
-    .collections p {
-        font-family: poppins;
-        font-size: 14px;
-        text-align: center;
+   }
+  @media (min-width: 768px) { 
+    .collections-Sec-row{
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
     }
-    .collections .col {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        min-width: 200px;
-        padding: 10px 40px;
+   }
+  @media (min-width: 576px) { 
+    .collections-Sec-row{
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 1fr);
     }
-    a.collection-img img {
-        width: 100%;
-        border-radius: 500px;
-    }
+   }
+  .collections h2 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: poppins;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .collections p {
+    font-family: poppins;
+    font-size: 14px;
+    text-align: center;
+  }
+  .collections .col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+    padding: 10px 10px;
+  }
+  a.collection-img img {
+    width: 100%;
+    border-radius: 500px;
+  }
 </style>
