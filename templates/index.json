@@ -131,13 +131,24 @@
             "link": "\/",
             "alt_text": "Image Alt Text"
           }
+        },
+        "collection_eGNBED": {
+          "type": "collection",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/collection-3_380x_1d556d54-2e8e-4311-874a-50c84d23fbed.webp",
+            "title": "Dinning Chair",
+            "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, quos!",
+            "link": "\/",
+            "alt_text": "Image Alt Text"
+          }
         }
       },
       "block_order": [
         "collection_EtwAhz",
         "collection_La7fFC",
         "collection_VW4bpc",
-        "collection_mfKycr"
+        "collection_mfKycr",
+        "collection_eGNBED"
       ],
       "settings": {
         "padding_top": 70
