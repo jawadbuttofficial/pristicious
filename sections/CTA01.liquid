@@ -111,7 +111,7 @@
   .CTA01-col-middle {
     display: flex;
     flex-direction: column;
-    gap: 28px;
+    gap: 8px;
   }
   .shop-now-btn {
     padding: 10px 25px;
@@ -128,13 +128,10 @@
     color:#fff;
     scale:1.2;
   }
-  .row.CTA01-row{
-    --bs-gutter-x: 4.5rem;
-  }
 {% endstyle %}
 
 <div class="container">
-  <div class="row CTA01-row" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{section.settings.padding_bottom }}px;">
+  <div class="row " style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{section.settings.padding_bottom }}px;">
     <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
       <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
     </div>
