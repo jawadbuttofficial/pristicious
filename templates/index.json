@@ -50,45 +50,6 @@
       "settings": {
       }
     },
-    "hero_slider_hcMaeJ": {
-      "type": "HeroSlider",
-      "blocks": {
-        "slide_XwPV4L": {
-          "type": "slide",
-          "settings": {
-            "background_image": "shopify:\/\/shop_images\/black-neo-classical-master-bedroom-design.webp",
-            "text": "Slide Text",
-            "button_text": "Shop Now",
-            "button_url": "\/"
-          }
-        },
-        "slide_Btdm43": {
-          "type": "slide",
-          "settings": {
-            "background_image": "shopify:\/\/shop_images\/home3-slider-3_768x_1cc33180-3980-4ec0-b5e3-b48bea54f831.webp",
-            "text": "Slide Text",
-            "button_text": "Shop Now",
-            "button_url": "\/"
-          }
-        },
-        "slide_6mK9Xy": {
-          "type": "slide",
-          "settings": {
-            "background_image": "shopify:\/\/shop_images\/contact-us-flatlay.jpg",
-            "text": "Slide Text",
-            "button_text": "Shop Now",
-            "button_url": "\/"
-          }
-        }
-      },
-      "block_order": [
-        "slide_XwPV4L",
-        "slide_Btdm43",
-        "slide_6mK9Xy"
-      ],
-      "settings": {
-      }
-    },
     "collections_section_3Xpamg": {
       "type": "CollectionsSection",
       "blocks": {
@@ -135,7 +96,7 @@
         "collection_eGNBED": {
           "type": "collection",
           "settings": {
-            "image": "shopify:\/\/shop_images\/collection-3_380x_1d556d54-2e8e-4311-874a-50c84d23fbed.webp",
+            "image": "shopify:\/\/shop_images\/collection-5_380x_a6104c9c-da78-44b3-81c2-6cf3ef722cea.webp",
             "title": "Dinning Chair",
             "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, quos!",
             "link": "\/",
@@ -176,7 +137,6 @@
   },
   "order": [
     "features_mYUJkK",
-    "hero_slider_hcMaeJ",
     "collections_section_3Xpamg",
     "cta01_FaEYJJ"
   ]
