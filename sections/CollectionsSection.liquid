@@ -63,14 +63,15 @@
 <div class="container collections overflow-hidden" style="padding-top:{{ section.settings.padding_top }}px;">
     <div class="row">
         {% for block in section.blocks %}
-            <div class="col col-lg-3 col-md-6 col-sm-6 col-xsm-12">
+            <div class="col">
                 <a href="{{ block.settings.link }}" class="collection-img">
-                    <img src="{{ block.settings.image | img_url: '380x' }}" alt="{{ block.settings.alt_text }}">
+                    <img src="{{ block.settings.image | img_url: '380px' }}" alt="{{ block.settings.alt_text }}">
                 </a>
                 <h2>{{ block.settings.title }}</h2>
                 <p>{{ block.settings.description }}</p>
             </div>
         {% endfor %}
+        <div class="col .d-none .d-md-flex"></div>
     </div>
 </div>
 
