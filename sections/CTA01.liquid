@@ -3,6 +3,24 @@
   "name": "CTA01",
   "settings": [
     {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Spacing Top",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "default": 20
+    },
+    {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Spacing Bottom",
+        "min": 20,
+        "max": 100,
+        "step": 5,
+        "default": 20
+    },
+    {
       "type": "image_picker",
       "id": "Card_01_image",
       "label": "Card 01 background image"
@@ -114,7 +132,7 @@
 {% endstyle %}
 
 <div class="container">
-  <div class="row CTA01-row">
+  <div class="row CTA01-row" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.setting.padding_bottom }}px;">
     <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
       <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
     </div>
