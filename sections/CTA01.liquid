@@ -1,112 +1,130 @@
 {% schema %}
+{
+  "name": "CTA01",
+  "settings": [
     {
-      "name": "CTA01",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "Card_01_image",
-          "label": "Card 01 background image"
-        },
-        {
-          "type": "text",
-          "id": "button_01_text",
-          "label": "Card 01 Button Text",
-          "default": "Shop Now"
-        },
-        {
-          "type": "text",
-          "id": "button_01_url",
-          "label": "Card 01 button URL",
-          "default": "/"
-        },
-        {
-          "type": "image_picker",
-          "id": "Card_02_image",
-          "label": "Card 02 background image"
-        },
-        {
-          "type": "text",
-          "id": "button_02_text",
-          "label": "Card 02 Button Text",
-          "default": "Shop Now"
-        },
-        {
-          "type": "text",
-          "id": "button_02_url",
-          "label": "Card 02 button URL",
-          "default": "/"
-        },
-        {
-          "type": "image_picker",
-          "id": "Card_03_image",
-          "label": "Card 03 background image"
-        },
-        {
-          "type": "text",
-          "id": "button_03_text",
-          "label": "Card 03 Button Text",
-          "default": "Shop Now"
-        },
-        {
-          "type": "text",
-          "id": "button_03_url",
-          "label": "Card 03 button URL",
-          "default": "/"
-        },
-        {
-          "type": "image_picker",
-          "id": "Card_04_image",
-          "label": "Card 04 background image"
-        },
-        {
-          "type": "text",
-          "id": "button_04_text",
-          "label": "Card 04 Button Text",
-          "default": "Shop Now"
-        },
-        {
-          "type": "text",
-          "id": "button_04_url",
-          "label": "Card 04 button URL",
-          "default": "/"
-        }
-      ],
-      "presets": [
-        {
-          "name": "CTA Cards",
-          "category": "Custom"
-        }
-      ]
+      "type": "image_picker",
+      "id": "Card_01_image",
+      "label": "Card 01 background image"
+    },
+    {
+      "type": "text",
+      "id": "button_01_text",
+      "label": "Card 01 Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "button_01_url",
+      "label": "Card 01 button URL",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "Card_02_image",
+      "label": "Card 02 background image"
+    },
+    {
+      "type": "text",
+      "id": "button_02_text",
+      "label": "Card 02 Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "button_02_url",
+      "label": "Card 02 button URL",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "Card_03_image",
+      "label": "Card 03 background image"
+    },
+    {
+      "type": "text",
+      "id": "button_03_text",
+      "label": "Card 03 Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "button_03_url",
+      "label": "Card 03 button URL",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "Card_04_image",
+      "label": "Card 04 background image"
+    },
+    {
+      "type": "text",
+      "id": "button_04_text",
+      "label": "Card 04 Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "text",
+      "id": "button_04_url",
+      "label": "Card 04 button URL",
+      "default": "/"
     }
-    {% endschema %}
-    
-    {% style %}
-      .CTA01_Card {
-        display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        min-height: 400px;
-        background-size: cover;
-        background-position: center;
-      }
-    {% endstyle %}
-    
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
-          <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
-        </div>
-        <div class="col-lg-4">
-          <div class="CTA01_Card" style="background-image: url({{ section.settings.Card_02_image | image_url }}); height:200px">
-            <a href="{{ section.settings.button_02_url }}" class="shop-now-btn">{{ section.settings.button_02_text }}</a>
-          </div>
-          <div class="CTA01_Card" style="background-image: url({{ section.settings.Card_03_image | image_url }}); height:200px">
-            <a href="{{ section.settings.button_03_url }}" class="shop-now-btn">{{ section.settings.button_03_text }}</a>
-          </div>
-        </div>
-        <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_04_image | image_url }});">
-          <a href="{{ section.settings.button_04_url }}" class="shop-now-btn">{{ section.settings.button_04_text }}</a>
-        </div>
+  ],
+  "presets": [
+    {
+      "name": "CTA Cards",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .CTA01_Card {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+  }
+  .CTA01-col-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .shop-now-btn {
+    padding: 10px 25px;
+    background: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    color: #888;
+  }
+{% endstyle %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
+      <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
+    </div>
+    <div class="col-lg-4 CTA01-col-middle">
+      <div
+        class="CTA01_Card"
+        style="background-image: url({{ section.settings.Card_02_image | image_url }}); height:200px"
+      >
+        <a href="{{ section.settings.button_02_url }}" class="shop-now-btn">{{ section.settings.button_02_text }}</a>
+      </div>
+      <div
+        class="CTA01_Card"
+        style="background-image: url({{ section.settings.Card_03_image | image_url }}); height:200px"
+      >
+        <a href="{{ section.settings.button_03_url }}" class="shop-now-btn">{{ section.settings.button_03_text }}</a>
       </div>
     </div>
-    
+    <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_04_image | image_url }});">
+      <a href="{{ section.settings.button_04_url }}" class="shop-now-btn">{{ section.settings.button_04_text }}</a>
+    </div>
+  </div>
+</div>
