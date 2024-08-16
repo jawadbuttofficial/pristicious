@@ -146,6 +146,8 @@
     "cta01_FaEYJJ": {
       "type": "CTA01",
       "settings": {
+        "padding_top": 50,
+        "padding_bottom": 50,
         "Card_01_image": "shopify:\/\/shop_images\/wooden-table-with-a-scale-and-pour-over-coffee.jpg",
         "button_01_text": "Shop Now",
         "button_01_url": "\/",
