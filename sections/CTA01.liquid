@@ -102,10 +102,13 @@
     font-weight: 700;
     color: #888;
   }
+  .row.CTA01-row{
+    --bs-gutter-x: 5.5rem;
+  }
 {% endstyle %}
 
 <div class="container">
-  <div class="row">
+  <div class="row CTA01-row">
     <div class="col-lg-4 CTA01_Card" style="background-image: url({{ section.settings.Card_01_image | image_url }});">
       <a href="{{ section.settings.button_01_url }}" class="shop-now-btn">{{ section.settings.button_01_text }}</a>
     </div>
