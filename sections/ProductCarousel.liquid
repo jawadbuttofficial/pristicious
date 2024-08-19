@@ -296,7 +296,21 @@
 {% schema %}
 {
   "name": "Product Slider",
-  "settings": [],
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Number of Products",
+      "default": 4,
+      "min": 1,
+      "max": 12
+    }
+  ],
   "presets": [
     {
       "name": "Product Slider",
