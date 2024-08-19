@@ -136,11 +136,17 @@
         "button_04_text": "Shop Now",
         "button_04_url": "\/"
       }
+    },
+    "product_carousel_m8Dbz4": {
+      "type": "ProductCarousel",
+      "settings": {
+      }
     }
   },
   "order": [
     "features_mYUJkK",
     "collections_section_3Xpamg",
-    "cta01_FaEYJJ"
+    "cta01_FaEYJJ",
+    "product_carousel_m8Dbz4"
   ]
 }
