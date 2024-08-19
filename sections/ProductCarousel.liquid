@@ -41,10 +41,10 @@
     <div class="product-slider">
       {% for product in products %}
         <div class="slider-product-card">
-          <img src="{{ product.featured_image | img_url: '360x' }}" alt="{{ product.title }}" width="100%" class="normal-image">
+          <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" width="100%" class="normal-image">
           
           {% if product.variants.size > 1 %}
-            <img src="{{ product.variants.first.image | img_url: '360x' }}" alt="{{ product.title }} variant" width="100%" class="hover-image">
+            <img src="{{ product.variants.first.image | img_url }}" alt="{{ product.title }} variant" width="100%" class="hover-image">
           {% endif %}
           
           <div class="product-card-action">
