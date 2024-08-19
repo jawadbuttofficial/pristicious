@@ -195,114 +195,59 @@
 </style>
 
 <div class="container mt-5">
-        <div class="row d-flex justify-content-between">
-            <div class="col-lg-6 col-md-12">
-                <p class="sub-title m-0 p-0">HANDPICK FURNITURE</p>
-                <h2 class="title">Home Decoration</h2>
-            </div>
-            <div
-                class="p-slider-nav lg-slider-nav col-lg-6 col-md-12 d-flex justify-content-end align-items-end px-4 gap-2">
-                <span class="prev slider-nav-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        transform="matrix(-1, 0, 0, 1, 0, 0)">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
-                                fill="currentColor"></path>
-                        </g>
-                    </svg>
-                </span>
-                <span class="next slider-nav-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
-                                fill="currentColor"></path>
-                        </g>
-                    </svg>
-                </span>
-            </div>
+    <div class="row d-flex justify-content-between">
+        <div class="col-lg-6 col-md-12">
+            <p class="sub-title m-0 p-0">HANDPICK FURNITURE</p>
+            <h2 class="title">Home Decoration</h2>
         </div>
-        <div class="row mt-3">
+        <div class="p-slider-nav lg-slider-nav col-lg-6 col-md-12 d-flex justify-content-end align-items-end px-4 gap-2">
+            <span class="prev slider-nav-arrow">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
+                </svg>
+            </span>
+            <span class="next slider-nav-arrow">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="product-slider">
+            {% if section.settings.collection != blank %}
+            {% assign collection = collections[section.settings.collection] %}
+            {% assign products = collection.products | limit: section.settings.product_limit %}
+
+            {% if products.size > 0 %}
             <div class="product-slider">
-                {% if section.settings.collection != blank %}
-  {% assign collection = collections[section.settings.collection] %}
-  {% assign products = collection.products | limit: section.settings.product_limit %}
-  
-  {% if products.size > 0 %}
-    <div class="product-slider">
-      {% for product in products %}
-        <div class="slider-product-card">
-          <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" width="100%" class="normal-image">
-          
-          {% if product.variants.size > 1 %}
-            <img src="{{ product.variants.first.image | img_url }}" alt="{{ product.title }} variant" width="100%" class="hover-image">
-          {% endif %}
-          
-          <div class="product-card-action">
-            <span><i class="bi bi-eye"></i></span>
-            <span><i class="bi bi-heart"></i></span>
-          </div>
-          
-          <div class="add-to-cart">
-            <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}">ADD TO CART</a>
-          </div>
-          
-          <div class="product-info">
-            <h1>{{ product.title }}</h1>
-            <p>{{ product.price | money }}</p>
-            
-            {% if product.variants.size > 1 %}
-              <div class="variant-images">
-                {% for variant in product.variants %}
-                  <img src="{{ variant.image | img_url: '60x60' }}" alt="{{ variant.title }}" class="variant-circle">
+                {% for product in products %}
+                <div class="slider-product-card">
+                    <h1>{{ product.title }}</h1>
+                </div>
                 {% endfor %}
-              </div>
+            </div>
             {% endif %}
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  {% endif %}
-{% endif %}
-            </div>
-        </div>
-        <div class="row flex-nowrap nav-arrow-mobile mt-3">
-            <div class="col d-flex justify-content-end align-self-center">
-                <span class="prev slider-nav-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        transform="matrix(-1, 0, 0, 1, 0, 0)">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
-                                fill="currentColor"></path>
-                        </g>
-                    </svg>
-                </span>
-            </div>
-            <div class="col d-flex justify-content-start align-self-center">
-                <span class="next slider-nav-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z"
-                                fill="currentColor"></path>
-                        </g>
-                    </svg>
-                </span>
-            </div>
-
-
+            {% endif %}
         </div>
     </div>
+    <div class="row flex-nowrap nav-arrow-mobile mt-3">
+        <div class="col d-flex justify-content-end align-self-center">
+            <span class="prev slider-nav-arrow">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
+                    <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
+                </svg>
+            </span>
+        </div>
+        <div class="col d-flex justify-content-start align-self-center">
+            <span class="next slider-nav-arrow">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
+                </svg>
+            </span>
+        </div>
+    </div>
+</div>
 
 
 
