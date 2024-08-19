@@ -141,7 +141,7 @@
       "type": "ProductCarousel",
       "settings": {
         "collection": "frontpage",
-        "product_limit": 4
+        "product_limit": 5
       }
     }
   },
