@@ -219,15 +219,44 @@
             {% assign collection = collections[section.settings.collection] %}
             {% assign products = collection.products | limit: section.settings.product_limit %}
 
-            {% if products.size > 0 %}
-            <div class="product-slider">
-                {% for product in products %}
-                <div class="slider-product-card">
-                    <h1>{{ product.title }}</h1>
-                </div>
+            
+{% if products.size > 0 %}
+    <div class="product-slider">
+      {% for product in products %}
+        <div class="slider-product-card">
+          <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" width="100%" class="normal-image">
+          
+          {% if product.variants.size > 1 %}
+            <img src="{{ product.variants.first.image | img_url }}" alt="{{ product.title }} variant" width="100%" class="hover-image">
+          {% endif %}
+          
+          <div class="product-card-action">
+            <span><i class="bi bi-eye"></i></span>
+            <span><i class="bi bi-heart"></i></span>
+          </div>
+          
+          <div class="add-to-cart">
+            <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}">ADD TO CART</a>
+          </div>
+          
+          <div class="product-info">
+            <h1>{{ product.title }}</h1>
+            <p>{{ product.price | money }}</p>
+            
+            {% if product.variants.size > 1 %}
+              <div class="variant-images">
+                {% for variant in product.variants %}
+                  <img src="{{ variant.image | img_url: '60x60' }}" alt="{{ variant.title }}" class="variant-circle">
                 {% endfor %}
-            </div>
+              </div>
             {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+              
             {% endif %}
 
     </div>
