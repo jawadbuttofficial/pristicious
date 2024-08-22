@@ -214,7 +214,7 @@
         </div>
     </div>
     <div class="row mt-3">
-        <div class="product-slider">
+
             {% if section.settings.collection != blank %}
             {% assign collection = collections[section.settings.collection] %}
             {% assign products = collection.products | limit: section.settings.product_limit %}
@@ -229,7 +229,7 @@
             </div>
             {% endif %}
             {% endif %}
-        </div>
+
     </div>
     <div class="row flex-nowrap nav-arrow-mobile mt-3">
         <div class="col d-flex justify-content-end align-self-center">
