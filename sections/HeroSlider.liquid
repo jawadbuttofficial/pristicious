@@ -1,8 +1,8 @@
 <!-- custom-slider.liquid -->
 <div class="container">
   <div class="row">
-    <div class="slider">
-      <div class="slider-nav-arrow">
+    
+    <div class="slider-nav-arrow">
       <span class="prev-arr slider-nav-arrow">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                         transform="matrix(-1, 0, 0, 1, 0, 0)">
@@ -16,6 +16,9 @@
                     </svg>
                 </span>
       </div>
+    
+    <div class="slider">
+      
       
       {% for block in section.blocks %}
         <div>
@@ -26,8 +29,10 @@
           </div>
         </div>
       {% endfor %}
+      
+    </div>
 
-      <div class="slider-nav-arrow">
+    <div class="slider-nav-arrow">
         <span class="next-arr slider-nav-arrow">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -40,8 +45,7 @@
                     </svg>
                 </span>
       </div>
-      
-    </div>
+    
   </div>
 </div>
 
