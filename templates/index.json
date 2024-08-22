@@ -50,6 +50,55 @@
       "settings": {
       }
     },
+    "hero_slider_9nLje8": {
+      "type": "HeroSlider",
+      "blocks": {
+        "slide_rV38hf": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/home3-slider-3_768x_1cc33180-3980-4ec0-b5e3-b48bea54f831.webp",
+            "text": "Slide Text",
+            "button_text": "Shop Now",
+            "button_url": "\/"
+          }
+        },
+        "slide_Kk4qhB": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/contact-us-flatlay.jpg",
+            "text": "Slide Text",
+            "button_text": "Shop Now",
+            "button_url": "\/"
+          }
+        },
+        "slide_FXgznn": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/home3-slider-3_768x_1cc33180-3980-4ec0-b5e3-b48bea54f831.webp",
+            "text": "Slide Text",
+            "button_text": "Shop Now",
+            "button_url": "\/"
+          }
+        },
+        "slide_68exdB": {
+          "type": "slide",
+          "settings": {
+            "background_image": "shopify:\/\/shop_images\/home3-slider-3_768x_1cc33180-3980-4ec0-b5e3-b48bea54f831.webp",
+            "text": "Slide Text",
+            "button_text": "Shop Now",
+            "button_url": "\/"
+          }
+        }
+      },
+      "block_order": [
+        "slide_rV38hf",
+        "slide_Kk4qhB",
+        "slide_FXgznn",
+        "slide_68exdB"
+      ],
+      "settings": {
+      }
+    },
     "collections_section_3Xpamg": {
       "type": "CollectionsSection",
       "blocks": {
@@ -147,6 +196,7 @@
   },
   "order": [
     "features_mYUJkK",
+    "hero_slider_9nLje8",
     "collections_section_3Xpamg",
     "cta01_FaEYJJ",
     "product_carousel_m8Dbz4"
