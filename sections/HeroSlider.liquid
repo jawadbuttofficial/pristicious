@@ -4,7 +4,7 @@
     <div class="slider">
       {% for block in section.blocks %}
         <div>
-            <div class="slide-image" style="background-image: url({{ block.settings.background_image | img_url: "orignal" }});"></div>
+            <div class="slide-image" style="background-image: url({{ block.settings.background_image | image_url }});"></div>
             <div class="slide-content">
             <p>{{ block.settings.text }}</p>
             <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
