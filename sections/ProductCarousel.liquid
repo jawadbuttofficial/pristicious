@@ -283,30 +283,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const notyf = new Notyf({
-      duration: 1000,
-      position: {
-        x: 'right',
-        y: 'bottom',
-      },
-      types: [
-        {
-          type: 'error',
-          background: 'red', // Set the background to red for error
-          color: '#fff',
-          duration: 2000,
-          dismissible: true,
-        },
-        {
-          type: 'success',
-          background: 'green', // Set the background to green for success
-          color: '#fff',
-          duration: 2000,
-          dismissible: true,
-        },
-      ],
-    });
-
+  
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
@@ -343,7 +320,7 @@
           if (icon) {
             icon.style.color = ''; // Reset icon color
           }
-          notyf.error('Product removed from Wishlist');
+          toastr.error('Product removed from wishlist')
         } else {
           wishlist.push(productId); // Add to wishlist
           this.style.backgroundColor = '#70D1B7'; // Apply active styles
@@ -351,7 +328,7 @@
           if (icon) {
             icon.style.color = '#fff'; // Apply active icon color
           }
-          notyf.success('Product added to Wishlist');
+          toastr.success('Product added to wishlist')
         }
 
         // Save updated wishlist to local storage
