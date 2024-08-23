@@ -19,6 +19,20 @@
     </span>
 
     <div class="slider">
+
+      {% for block in section.blocks %}
+
+        <img class="slide-image" src="{{ block.settings.background_image | image_url }}" width="100%" height="100%" alt="">
+        <div class="slide-content">
+            <p>{{ block.settings.text }}</p>
+            <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
+          </div>
+
+      {% endfor %}
+
+    </div>
+
+    {% comment %} <div class="slider">
       {% for block in section.blocks %}
         <div>
           <div
@@ -31,7 +45,7 @@
           </div>
         </div>
       {% endfor %}
-    </div>
+    </div> {% endcomment %}
 
     <span class="next-arr slider-nav-arrow">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +63,7 @@
 
 <style>
   .slider {
-    padding: 20px;
+    padding: 0px;
   }
 
   .hero-slider {
@@ -107,6 +121,7 @@
   .slider .slick-slide .slide-image {
     width: 100%;
     height: 100%;
+    min-width: 400px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
