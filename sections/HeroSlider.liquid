@@ -36,23 +36,6 @@
       {% endfor %}
     </div>
 
-    {% comment %}
-      <div class="slider">
-        {% for block in section.blocks %}
-          <div>
-            <div
-              class="slide-image"
-              style="background-image: url({{ block.settings.background_image | image_url }});"
-            ></div>
-            <div class="slide-content">
-              <p>{{ block.settings.text }}</p>
-              <a href="{{ block.settings.button_url }}">{{ block.settings.button_text }}</a>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% endcomment %}
-
     <span class="next-arr slider-nav-arrow">
       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -79,10 +62,11 @@
   .hero-slider .slider-nav-arrow {
     position: absolute;
     top: 50%;
+    left: -15px;
     z-index: 99;
   }
   .hero-slider .slider-nav-arrow:last-child {
-    right: 0;
+    right: -15px;
   }
 
   .slider .slick-slide {
@@ -137,17 +121,7 @@
   .slider .slide-image:hover img{
     scale: 1.1;
   }
-  /* .slider .slick-slide .slide-image {
-    width: 100%;
-    height: 100%;
-    min-height: 400px;
-    transition: 1s ease;
-  }
 
-  .slider .slick-slide:hover .slide-image {
-    width: 105%;
-    height: 105%;
-  } */
 </style>
 
 {% schema %}
