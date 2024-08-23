@@ -195,16 +195,16 @@
                   width="100%"
                   height="100%"
                   class="normal-image product-image"
-              >
-              {% if product.images.size > 1 %}
-                <img
-                  src="{{ product.images[1] |  image_url }}"
-                  alt="{{ product.title }} second image"
-                  height="100%"
-                  width="100%"
-                  class="hover-image product-image"
                 >
-              {% endif %}
+                {% if product.images.size > 1 %}
+                  <img
+                    src="{{ product.images[1] |  image_url }}"
+                    alt="{{ product.title }} second image"
+                    height="100%"
+                    width="100%"
+                    class="hover-image product-image"
+                  >
+                {% endif %}
               </a>
 
               <div class="product-card-action">
@@ -281,12 +281,25 @@
 }
 {% endschema %}
 
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
+    const notyf = new Notyf({
+      duration: 1000,
+      position: {
+        x: 'right',
+        y: 'bottom',
+      },
+      types: [
+        {
+          type: 'error',
+          background: 'indianred',
+          color: '#fff',
+          duration: 2000,
+          dismissible: true,
+        },
+      ],
+    });
 
-    // Create an instance of Notyf
-var notyf = new Notyf();
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
@@ -294,50 +307,49 @@ var notyf = new Notyf();
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
     // Apply active styles to buttons that are in the wishlist
-    wishlistButtons.forEach(button => {
-        const productId = button.getAttribute('product-id');
+    wishlistButtons.forEach((button) => {
+      const productId = button.getAttribute('product-id');
 
-        if (wishlist.includes(productId)) {
-            button.style.backgroundColor = "#70D1B7";
-            const icon = button.querySelector('i');
-            if (icon) {
-                icon.style.color = "#fff";
-            }
+      if (wishlist.includes(productId)) {
+        button.style.backgroundColor = '#70D1B7';
+        const icon = button.querySelector('i');
+        if (icon) {
+          icon.style.color = '#fff';
         }
+      }
     });
 
     // Add event listeners to all wishlist buttons
-    wishlistButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Get the product ID from the clicked element
-            const productId = this.getAttribute('product-id');
-            
-            // Retrieve current wishlist from local storage, or create a new array if not found
-            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    wishlistButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        // Get the product ID from the clicked element
+        const productId = this.getAttribute('product-id');
 
-            // Toggle product ID in the wishlist
-            if (wishlist.includes(productId)) {
-                wishlist = wishlist.filter(id => id !== productId); // Remove from wishlist
-                this.style.backgroundColor = ""; // Reset styles
-                const icon = this.querySelector('i');
-                if (icon) {
-                    icon.style.color = ""; // Reset icon color
-                }
-                notyf.error('Product removed from Wishlist');
-            } else {
-                wishlist.push(productId); // Add to wishlist
-                this.style.backgroundColor = "#70D1B7"; // Apply active styles
-                const icon = this.querySelector('i');
-                if (icon) {
-                    icon.style.color = "#fff"; // Apply active icon color
-                }
-                notyf.success('Product added to Wishlist');
-            }
+        // Retrieve current wishlist from local storage, or create a new array if not found
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-            // Save updated wishlist to local storage
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-        });
+        // Toggle product ID in the wishlist
+        if (wishlist.includes(productId)) {
+          wishlist = wishlist.filter((id) => id !== productId); // Remove from wishlist
+          this.style.backgroundColor = ''; // Reset styles
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.style.color = ''; // Reset icon color
+          }
+          notyf.error('Product removed from Wishlist');
+        } else {
+          wishlist.push(productId); // Add to wishlist
+          this.style.backgroundColor = '#70D1B7'; // Apply active styles
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.style.color = '#fff'; // Apply active icon color
+          }
+          notyf.success('Product added to Wishlist');
+        }
+
+        // Save updated wishlist to local storage
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      });
     });
-});
-
+  });
 </script>
