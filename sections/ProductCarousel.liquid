@@ -2,7 +2,7 @@
   .sub-title {
     font-size: 14px;
     font-weight: 600;
-    color: #A1A1A1;
+    color: #a1a1a1;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -27,7 +27,7 @@
   }
 
   .slider-nav-arrow:hover {
-    background-color: #70D1B7;
+    background-color: #70d1b7;
     box-shadow: 2px 2px 10px #0000001a;
   }
 
@@ -110,22 +110,29 @@
 
   <div class="row mt-3">
     <p>Debug</p>
+    <p>Collection handle: {{ section.settings.collection }}</p>
+
     {% if section.settings.collection != blank %}
-      <p>available at the moment.</p>
+      <p>Collection is not blank</p>
+
       {% assign collection = collections[section.settings.collection] %}
+      <p>Collection title: {{ collection.title }}</p>
+
       {% assign products = collection.products | limit: section.settings.product_limit %}
+      <p>Product count: {{ products.size }}</p>
 
       {% if products.size > 0 %}
-        <p>Some Products is falling in criteria</p>
+        <p>Some products meet the criteria</p>
         <div class="product-slider">
           {% for product in products %}
             {% render 'product-card' with product %}
           {% endfor %}
         </div>
       {% else %}
-        <!-- Fallback message for no products -->
         <p>No products available at the moment.</p>
       {% endif %}
+    {% else %}
+      <p>Collection is blank</p>
     {% endif %}
   </div>
 
