@@ -160,6 +160,11 @@
   .slider-product-card:hover .hover-image {
     opacity: 1;
   }
+
+  #toast-container > .toast-success {
+    background-color: #28a745 !important; /* Green background for success */
+    color: #ffffff !important; /* White text color */
+  }
 </style>
 <div class="container mt-5">
   <div class="row d-flex justify-content-between">
@@ -283,7 +288,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-  
+
+
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
