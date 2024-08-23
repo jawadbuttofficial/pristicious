@@ -288,7 +288,6 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
@@ -325,7 +324,6 @@
           if (icon) {
             icon.style.color = ''; // Reset icon color
           }
-          toastr.error('Product removed from wishlist')
         } else {
           wishlist.push(productId); // Add to wishlist
           this.style.backgroundColor = '#70D1B7'; // Apply active styles
@@ -333,7 +331,6 @@
           if (icon) {
             icon.style.color = '#fff'; // Apply active icon color
           }
-          toastr.success('Product added to wishlist')
         }
 
         // Save updated wishlist to local storage
