@@ -187,7 +187,7 @@
     <div class="product-slider">
       {% for product in products %}
         <div class="slider-product-card">
-          <img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100%" height="100%" class="normal-image product-image">
+          <a href="{{ product.url }}"><img src="{{ product.featured_image | image_url }}" alt="{{ product.title }}" width="100%" height="100%" class="normal-image product-image"></a>
           {% if product.variants.size > 1 %}
             <img src="{{ product.variants.first.image | image_url }}" alt="{{ product.title }} variant" height="100%" width="100%" class="hover-image product-image">
           {% endif %}
