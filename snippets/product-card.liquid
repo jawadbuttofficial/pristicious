@@ -27,7 +27,7 @@
     {% if product.variants.size > 1 %}
       <div class="product-variants">
         {% for variant in product.variants %}
-          <img src="{{ variant.image | img_url: '60x60' }}" alt="{{ variant.title }}" class="variant-image">
+          <img src="{{ variant.image | image_url }}" height="50px" width="50px" alt="{{ variant.title }}" class="variant-image">
         {% endfor %}
       </div>
     {% endif %}

@@ -122,7 +122,7 @@
       {% if products.size > 0 %}
         <div class="product-slider">
           {% for product in products %}
-            {% include 'product-card' with product %}
+            {% render 'product-card' with product %}
           {% endfor %}
         </div>
       {% endif %}
