@@ -115,19 +115,18 @@
   </div>
 
   <div class="row mt-3">
-    <p>debug</p>
     {% if section.settings.collection != blank %}
       {% assign collection = collections[section.settings.collection] %}
       {% assign products = collection.products | limit: section.settings.product_limit %}
 
       {% if products.size > 0 %}
+        <p>Some Products is falling in criteria</p>
         <div class="product-slider">
           {% for product in products %}
             {% render 'product-card' with product %}
           {% endfor %}
         </div>
-      {% else %}
-      <p>No is falling in criteria</p>
+      {% endif %}
     {% endif %}
   </div>
 

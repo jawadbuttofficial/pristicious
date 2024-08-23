@@ -189,8 +189,6 @@
     "product_carousel_m8Dbz4": {
       "type": "ProductCarousel",
       "settings": {
-        "collection": "frontpage",
-        "product_limit": 5
       }
     }
   },
