@@ -280,3 +280,33 @@
   ]
 }
 {% endschema %}
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get all wishlist elements
+    const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+
+    wishlistButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Get the product ID from the clicked element
+            const productId = this.getAttribute('product-id');
+            
+            // Retrieve current wishlist from local storage, or create a new array if not found
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+            // Add product ID if it's not already in the wishlist
+            if (!wishlist.includes(productId)) {
+                wishlist.push(productId);
+            }
+
+            // Save updated wishlist to local storage
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+            // Optional: provide feedback to user, like toggling the heart icon
+            this.querySelector('i').classList.toggle('active');
+        });
+    });
+});
+
+</script>
