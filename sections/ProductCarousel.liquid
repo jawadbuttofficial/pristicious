@@ -286,6 +286,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+    const wishlistButtonsIcon =document.querySelector('.add-to-wishlist i')
 
     wishlistButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -305,6 +306,7 @@
 
             // Optional: provide feedback to user, like toggling the heart icon
             this.style.backgroundColor = "#70D1B7";
+            wishlistButtonsIcon.style.color = "#fff";
         });
     });
 });
