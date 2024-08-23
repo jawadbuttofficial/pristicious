@@ -1,0 +1,168 @@
+<div class="product-card">
+  <div class="product-image-wrapper">
+    <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" class="product-image normal-image">
+
+    {% if product.variants.size > 1 %}
+      <img
+        src="{{ product.variants.first.image | img_url }}"
+        alt="{{ product.title }} variant"
+        class="product-image hover-image"
+      >
+    {% endif %}
+  </div>
+
+  <div class="product-card-action">
+    <span class="product-action-icon view-icon"><i class="bi bi-eye"></i></span>
+    <span class="product-action-icon wishlist-icon"><i class="bi bi-heart"></i></span>
+  </div>
+
+  <div class="product-add-to-cart">
+    <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}" class="add-to-cart-btn">Add to Cart</a>
+  </div>
+
+  <div class="product-info">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-price">{{ product.price | money }}</p>
+
+    {% if product.variants.size > 1 %}
+      <div class="product-variants">
+        {% for variant in product.variants %}
+          <img src="{{ variant.image | img_url: '60x60' }}" alt="{{ variant.title }}" class="variant-image">
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  .product-card {
+    width: 100%;
+    min-height: 200px;
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-image-wrapper {
+    position: relative;
+  }
+
+  .product-image {
+    width: 100%;
+    display: block;
+  }
+
+  .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .product-card:hover .hover-image {
+    opacity: 1;
+  }
+
+  .product-card-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    transition: transform 0.5s;
+    transform: translateX(60px);
+  }
+
+  .product-card:hover .product-card-action {
+    transform: translateX(0);
+  }
+
+  .product-action-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e7e8eb;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .product-action-icon i {
+    color: #888;
+  }
+
+  .product-action-icon:hover {
+    background-color: #70d1b7;
+  }
+
+  .product-action-icon:hover i {
+    color: #fff;
+  }
+
+  .product-add-to-cart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .product-card:hover .product-add-to-cart {
+    opacity: 1;
+  }
+
+  .add-to-cart-btn {
+    width: 90%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    border-radius: 0;
+  }
+
+  .add-to-cart-btn:hover {
+    background-color: #70d1b7;
+  }
+
+  .product-info {
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  .product-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px 0;
+  }
+
+  .product-price {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .product-variants {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .variant-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+  }
+</style>
