@@ -173,7 +173,7 @@
         "padding_top": 50,
         "padding_bottom": 50,
         "Card_01_image": "shopify:\/\/shop_images\/home3-banner-1_580x_c5f19fd2-c160-4e81-b7a4-12b971633031.webp",
-        "button_01_text": "Shop Now",
+        "button_01_text": "Shop Noww",
         "button_01_url": "\/",
         "Card_02_image": "shopify:\/\/shop_images\/home3-banner-2_580x_10977ee8-4cf3-4f22-87e0-9a9086549995.jpg",
         "button_02_text": "Shop Now",
@@ -189,6 +189,8 @@
     "product_carousel_m8Dbz4": {
       "type": "ProductCarousel",
       "settings": {
+        "collection": "frontpage",
+        "product_limit": 7
       }
     }
   },
