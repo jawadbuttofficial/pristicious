@@ -287,6 +287,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
+    // Retrieve current wishlist from local storage, or create a new array if not found
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    // Apply active styles to buttons that are in the wishlist
+    wishlistButtons.forEach(button => {
+        const productId = button.getAttribute('product-id');
+
+        if (wishlist.includes(productId)) {
+            button.style.backgroundColor = "#70D1B7";
+            const icon = button.querySelector('i');
+            if (icon) {
+                icon.style.color = "#fff";
+            }
+        }
+    });
+
+    // Add event listeners to all wishlist buttons
     wishlistButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Get the product ID from the clicked element
@@ -295,23 +312,27 @@ document.addEventListener('DOMContentLoaded', function() {
             // Retrieve current wishlist from local storage, or create a new array if not found
             let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-            // Add product ID if it's not already in the wishlist
-            if (!wishlist.includes(productId)) {
-                wishlist.push(productId);
+            // Toggle product ID in the wishlist
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId); // Remove from wishlist
+                this.style.backgroundColor = ""; // Reset styles
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.color = ""; // Reset icon color
+                }
+            } else {
+                wishlist.push(productId); // Add to wishlist
+                this.style.backgroundColor = "#70D1B7"; // Apply active styles
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.style.color = "#fff"; // Apply active icon color
+                }
             }
 
             // Save updated wishlist to local storage
             localStorage.setItem('wishlist', JSON.stringify(wishlist));
-
-            // Change the background and icon color of the clicked button
-            this.style.backgroundColor = "#70D1B7";
-            const icon = this.querySelector('i');
-            if (icon) {
-                icon.style.color = "#fff";
-            }
         });
     });
 });
-
 
 </script>
