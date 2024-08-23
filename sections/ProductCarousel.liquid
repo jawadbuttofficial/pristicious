@@ -195,13 +195,10 @@
                   height="100%"
                   class="normal-image product-image"
               ></a>
-              {% if product.variants.size > 1
-                and product.first_available_variant
-                and product.first_available_variant.image
-              %}
+              {% if product.images.size > 1 %}
                 <img
-                  src="{{ product.first_available_variant.image }}"
-                  alt="{{ product.title }} variant"
+                  src="{{ product.images[1].src }}"
+                  alt="{{ product.title }} second image"
                   height="100%"
                   width="100%"
                   class="hover-image product-image"
