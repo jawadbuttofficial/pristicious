@@ -221,7 +221,7 @@
                   <div class="variant-images">
                     {% for variant in product.variants %}
                       <img
-                        src="{{ variant.image }}"
+                        src="{{ variant.image.src }}"
                         height="60px"
                         width="60px"
                         alt="{{ variant.title }}"
