@@ -284,6 +284,9 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Create an instance of Notyf
+var notyf = new Notyf();
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
@@ -320,6 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (icon) {
                     icon.style.color = ""; // Reset icon color
                 }
+                notyf.error('Product removed from Wishlist');
             } else {
                 wishlist.push(productId); // Add to wishlist
                 this.style.backgroundColor = "#70D1B7"; // Apply active styles
@@ -327,6 +331,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (icon) {
                     icon.style.color = "#fff"; // Apply active icon color
                 }
+                notyf.success('Product added to Wishlist');
             }
 
             // Save updated wishlist to local storage
