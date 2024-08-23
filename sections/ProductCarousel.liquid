@@ -115,8 +115,8 @@
   </div>
 
   <div class="row mt-3">
+    <p>debug</p>
     {% if section.settings.collection != blank %}
-      <p>debug</p>
       {% assign collection = collections[section.settings.collection] %}
       {% assign products = collection.products | limit: section.settings.product_limit %}
 
