@@ -1,38 +1,3 @@
-<div class="product-card">
-  <div class="product-image-wrapper">
-    <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" class="product-image normal-image">
-
-    {% if product.variants.size > 1 %}
-      <img
-        src="{{ product.variants.first.image | img_url }}"
-        alt="{{ product.title }} variant"
-        class="product-image hover-image"
-      >
-    {% endif %}
-  </div>
-
-  <div class="product-card-action">
-    <span class="product-action-icon view-icon"><i class="bi bi-eye"></i></span>
-    <span class="product-action-icon wishlist-icon"><i class="bi bi-heart"></i></span>
-  </div>
-
-  <div class="product-add-to-cart">
-    <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}" class="add-to-cart-btn">Add to Cart</a>
-  </div>
-
-  <div class="product-info">
-    <h1 class="product-title">{{ product.title }}</h1>
-    <p class="product-price">{{ product.price | money }}</p>
-
-    {% if product.variants.size > 1 %}
-      <div class="product-variants">
-        {% for variant in product.variants %}
-          <img src="{{ variant.image | image_url }}" height="50px" width="50px" alt="{{ variant.title }}" class="variant-image">
-        {% endfor %}
-      </div>
-    {% endif %}
-  </div>
-</div>
 
 <style>
   .product-card {
@@ -166,3 +131,40 @@
     border-radius: 50%;
   }
 </style>
+
+
+<div class="product-card">
+  <div class="product-image-wrapper">
+    <img src="{{ product.featured_image | img_url }}" alt="{{ product.title }}" class="product-image normal-image">
+
+    {% if product.variants.size > 1 %}
+      <img
+        src="{{ product.variants.first.image | img_url }}"
+        alt="{{ product.title }} variant"
+        class="product-image hover-image"
+      >
+    {% endif %}
+  </div>
+
+  <div class="product-card-action">
+    <span class="product-action-icon view-icon"><i class="bi bi-eye"></i></span>
+    <span class="product-action-icon wishlist-icon"><i class="bi bi-heart"></i></span>
+  </div>
+
+  <div class="product-add-to-cart">
+    <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}" class="add-to-cart-btn">Add to Cart</a>
+  </div>
+
+  <div class="product-info">
+    <h1 class="product-title">{{ product.title }}</h1>
+    <p class="product-price">{{ product.price | money }}</p>
+
+    {% if product.variants.size > 1 %}
+      <div class="product-variants">
+        {% for variant in product.variants %}
+          <img src="{{ variant.image | image_url }}" height="50px" width="50px" alt="{{ variant.title }}" class="variant-image">
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
