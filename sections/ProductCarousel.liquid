@@ -109,30 +109,16 @@
   </div>
 
   <div class="row mt-3">
-    <p>Debug</p>
-    <p>Collection handle: {{ section.settings.collection }}</p>
-
     {% if section.settings.collection != blank %}
-      <p>Collection is not blank</p>
-
       {% assign collection = collections[section.settings.collection] %}
-      <p>Collection title: {{ collection.title }}</p>
-
       {% assign products = collection.products | limit: section.settings.product_limit %}
-      <p>Product count: {{ products.size }}</p>
-
       {% if products.size > 0 %}
-        <p>Some products meet the criteria</p>
         <div class="product-slider">
           {% for product in products %}
             {% render 'product-card' with product %}
           {% endfor %}
         </div>
-      {% else %}
-        <p>No products available at the moment.</p>
       {% endif %}
-    {% else %}
-      <p>Collection is blank</p>
     {% endif %}
   </div>
 
