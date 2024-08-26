@@ -342,92 +342,98 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Get all wishlist elements
-    const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+  // Get all wishlist elements
+  const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
-    // Get the modal element
-    const modal = document.getElementById('modal');
+  // Get the modal element
+  const modal = document.getElementById('modal');
 
-    // Get the trigger element
-    const trigger = document.querySelectorAll('.quick-view');
+  // Get all quick-view trigger elements
+  const triggers = document.querySelectorAll('.quick-view');
 
-    // Get the close button
-    const closeBtn = document.querySelector('.close');
+  // Get the close button
+  const closeBtn = document.querySelector('.close');
 
-    // Retrieve current wishlist from local storage, or create a new array if not found
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  // Retrieve current wishlist from local storage, or create a new array if not found
+  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    // Apply active styles to buttons that are in the wishlist
-    wishlistButtons.forEach((button) => {
-      const productId = button.getAttribute('product-id');
+  // Apply active styles to buttons that are in the wishlist
+  wishlistButtons.forEach((button) => {
+    const productId = button.getAttribute('product-id');
 
+    if (wishlist.includes(productId)) {
+      button.style.backgroundColor = '#70D1B7';
+      const icon = button.querySelector('i');
+      if (icon) {
+        icon.style.color = '#fff';
+      }
+    }
+  });
+
+  // Add click event listener to each "quick-view" button
+  triggers.forEach((trigger) => {
+    trigger.addEventListener('click', function () {
+      // Set the display to block before showing the modal
+      modal.style.display = 'block';
+
+      // Add the "show" class to display the modal with a smooth transition
+      setTimeout(() => {
+        modal.classList.add('show');
+      }, 10); // A short delay to ensure the transition works
+    });
+  });
+
+  // When the user clicks on the close button, close the modal
+  closeBtn.addEventListener('click', function () {
+    // Remove the "show" class to hide the modal with a smooth transition
+    modal.classList.remove('show');
+
+    // Wait for the transition to end before setting display to none
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 400); // Match the transition duration (0.4s)
+  });
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      modal.classList.remove('show');
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400); // Match the transition duration (0.4s)
+    }
+  });
+
+  // Add event listeners to all wishlist buttons
+  wishlistButtons.forEach((button) => {
+    button.addEventListener('click', function () {
+      // Get the product ID from the clicked element
+      const productId = this.getAttribute('product-id');
+
+      // Retrieve current wishlist from local storage, or create a new array if not found
+      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+      // Toggle product ID in the wishlist
       if (wishlist.includes(productId)) {
-        button.style.backgroundColor = '#70D1B7';
-        const icon = button.querySelector('i');
+        wishlist = wishlist.filter((id) => id !== productId);
+        this.style.backgroundColor = '';
+        const icon = this.querySelector('i');
+        if (icon) {
+          icon.style.color = '';
+        }
+      } else {
+        wishlist.push(productId);
+        this.style.backgroundColor = '#70D1B7';
+        const icon = this.querySelector('i');
         if (icon) {
           icon.style.color = '#fff';
         }
       }
-    });
 
-    // Add click event listener to each "quick-view" button
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('click', function () {
-        // Add the "show" class to display the modal with smooth transition
-        modal.classList.add('show');
-      });
-    });
-
-    // When the user clicks on the close button, close the modal
-    closeBtn.addEventListener('click', function () {
-      // Remove the "show" class to hide the modal with smooth transition
-      modal.classList.remove('show');
-
-      // Wait for the transition to end before setting display to none
-      setTimeout(() => {
-        modal.style.display = 'none';
-      }, 400); // Match the transition duration (0.4s)
-    });
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.addEventListener('click', function (event) {
-      if (event.target === modal) {
-        modal.classList.remove('show');
-        setTimeout(() => {
-          modal.style.display = 'none';
-        }, 400); // Match the transition duration (0.4s)
-      }
-    });
-
-    // Add event listeners to all wishlist buttons
-    wishlistButtons.forEach((button) => {
-      button.addEventListener('click', function () {
-        // Get the product ID from the clicked element
-        const productId = this.getAttribute('product-id');
-
-        // Retrieve current wishlist from local storage, or create a new array if not found
-        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
-        // Toggle product ID in the wishlist
-        if (wishlist.includes(productId)) {
-          wishlist = wishlist.filter((id) => id !== productId);
-          this.style.backgroundColor = '';
-          const icon = this.querySelector('i');
-          if (icon) {
-            icon.style.color = '';
-          }
-        } else {
-          wishlist.push(productId);
-          this.style.backgroundColor = '#70D1B7';
-          const icon = this.querySelector('i');
-          if (icon) {
-            icon.style.color = '#fff';
-          }
-        }
-
-        // Save updated wishlist to local storage
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      });
+      // Save updated wishlist to local storage
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
     });
   });
+});
+
 </script>
