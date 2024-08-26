@@ -161,9 +161,34 @@
     opacity: 1;
   }
 
-  #toast-container > .toast-success {
-    background-color: #28a745 !important; /* Green background for success */
-    color: #ffffff !important; /* White text color */
+  /* Modal container */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Modal content */
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 60%;
+    max-width: 600px;
+  }
+
+  /* Close button */
+  .close {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
   }
 </style>
 <div class="container mt-5">
@@ -213,7 +238,7 @@
               </a>
 
               <div class="product-card-action">
-                <span type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="quick-view" product-id="{{ product.id }}"><i class="bi bi-eye"></i></span>
+                <span class="quick-view" product-id="{{ product.id }}"><i class="bi bi-eye"></i></span>
                 <span class="add-to-wishlist" product-id="{{ product.id }}"><i class="bi bi-heart"></i></span>
               </div>
               <div class="add-to-cart">
@@ -260,25 +285,18 @@
   </div>
 </div>
 
+{% comment %} modal Start {% endcomment %}
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Product Quick View</h2>
+    <p>Details about the product...</p>
   </div>
 </div>
+
+{% comment %} Modal End {% endcomment %}
+
 {% schema %}
 {
   "name": "Product Slider",
@@ -311,6 +329,15 @@
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
+    // Get the modal element
+    const modal = document.getElementById('modal');
+
+    // Get the trigger element
+    const trigger = document.querySelector('.quick-view');
+
+    // Get the close button
+    const closeBtn = document.querySelector('.close');
+
     // Retrieve current wishlist from local storage, or create a new array if not found
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
@@ -327,6 +354,23 @@
       }
     });
 
+    // When the user clicks the trigger, open the modal
+    trigger.addEventListener('click', function () {
+      modal.style.display = 'block';
+    });
+
+    // When the user clicks on the close button, close the modal
+    closeBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
     // Add event listeners to all wishlist buttons
     wishlistButtons.forEach((button) => {
       button.addEventListener('click', function () {
@@ -338,15 +382,15 @@
 
         // Toggle product ID in the wishlist
         if (wishlist.includes(productId)) {
-          wishlist = wishlist.filter((id) => id !== productId); 
-          this.style.backgroundColor = ''; 
+          wishlist = wishlist.filter((id) => id !== productId);
+          this.style.backgroundColor = '';
           const icon = this.querySelector('i');
           if (icon) {
-            icon.style.color = ''; 
+            icon.style.color = '';
           }
         } else {
-          wishlist.push(productId); 
-          this.style.backgroundColor = '#70D1B7'; 
+          wishlist.push(productId);
+          this.style.backgroundColor = '#70D1B7';
           const icon = this.querySelector('i');
           if (icon) {
             icon.style.color = '#fff';
