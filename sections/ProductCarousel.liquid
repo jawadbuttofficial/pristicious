@@ -339,12 +339,13 @@
   ]
 }
 {% endschema %}
-
 <script>
   document.addEventListener('DOMContentLoaded', function () {
+    // Debugging: Check if jQuery is loaded
+    console.log($);
+
     // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
-
 
     // Retrieve current wishlist from local storage, or create a new array if not found
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
@@ -352,7 +353,6 @@
     // Apply active styles to buttons that are in the wishlist
     wishlistButtons.forEach((button) => {
       const productId = button.getAttribute('product-id');
-
       if (wishlist.includes(productId)) {
         button.style.backgroundColor = '#70D1B7';
         const icon = button.querySelector('i');
@@ -362,8 +362,10 @@
       }
     });
 
+    // Debugging: Check if quick-view triggers are working
     $('[data-trigger="quick-view"]').on('click', function () {
       var productId = $(this).attr('product-id');
+      console.log('Quick view clicked for product:', productId); // Debugging log
       var modal = $('#modal');
 
       // Show the modal with transition
