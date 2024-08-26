@@ -305,7 +305,7 @@
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <h2>Product Quick View</h2>
+    <h2 id="modal-title">Product Title</h2>
     <p>Details about the product...</p>
   </div>
 </div>
@@ -342,98 +342,100 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-  // Get all wishlist elements
-  const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+    // Get all wishlist elements
+    const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
-  // Get the modal element
-  const modal = document.getElementById('modal');
 
-  // Get all quick-view trigger elements
-  const triggers = document.querySelectorAll('.quick-view');
+    // Retrieve current wishlist from local storage, or create a new array if not found
+    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-  // Get the close button
-  const closeBtn = document.querySelector('.close');
+    // Apply active styles to buttons that are in the wishlist
+    wishlistButtons.forEach((button) => {
+      const productId = button.getAttribute('product-id');
 
-  // Retrieve current wishlist from local storage, or create a new array if not found
-  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
-  // Apply active styles to buttons that are in the wishlist
-  wishlistButtons.forEach((button) => {
-    const productId = button.getAttribute('product-id');
-
-    if (wishlist.includes(productId)) {
-      button.style.backgroundColor = '#70D1B7';
-      const icon = button.querySelector('i');
-      if (icon) {
-        icon.style.color = '#fff';
-      }
-    }
-  });
-
-  // Add click event listener to each "quick-view" button
-  triggers.forEach((trigger) => {
-    trigger.addEventListener('click', function () {
-      // Set the display to block before showing the modal
-      modal.style.display = 'block';
-
-      // Add the "show" class to display the modal with a smooth transition
-      setTimeout(() => {
-        modal.classList.add('show');
-      }, 10); // A short delay to ensure the transition works
-    });
-  });
-
-  // When the user clicks on the close button, close the modal
-  closeBtn.addEventListener('click', function () {
-    // Remove the "show" class to hide the modal with a smooth transition
-    modal.classList.remove('show');
-
-    // Wait for the transition to end before setting display to none
-    setTimeout(() => {
-      modal.style.display = 'none';
-    }, 400); // Match the transition duration (0.4s)
-  });
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-      modal.classList.remove('show');
-      setTimeout(() => {
-        modal.style.display = 'none';
-      }, 400); // Match the transition duration (0.4s)
-    }
-  });
-
-  // Add event listeners to all wishlist buttons
-  wishlistButtons.forEach((button) => {
-    button.addEventListener('click', function () {
-      // Get the product ID from the clicked element
-      const productId = this.getAttribute('product-id');
-
-      // Retrieve current wishlist from local storage, or create a new array if not found
-      let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
-      // Toggle product ID in the wishlist
       if (wishlist.includes(productId)) {
-        wishlist = wishlist.filter((id) => id !== productId);
-        this.style.backgroundColor = '';
-        const icon = this.querySelector('i');
-        if (icon) {
-          icon.style.color = '';
-        }
-      } else {
-        wishlist.push(productId);
-        this.style.backgroundColor = '#70D1B7';
-        const icon = this.querySelector('i');
+        button.style.backgroundColor = '#70D1B7';
+        const icon = button.querySelector('i');
         if (icon) {
           icon.style.color = '#fff';
         }
       }
+    });
 
-      // Save updated wishlist to local storage
-      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    $('[data-trigger="quick-view"]').on('click', function () {
+      var productId = $(this).attr('product-id');
+      var modal = $('#modal');
+
+      // Show the modal with transition
+      modal.css('display', 'block'); // Ensure modal is displayed
+      setTimeout(function () {
+        modal.addClass('show');
+      }, 10); // Slight delay for CSS transition to take effect
+
+      // Fetch product data
+      $.ajax({
+        url: '/products/' + productId + '.js',
+        dataType: 'json',
+        success: function (data) {
+          $('#modal-title').text(data.title);
+          $('#modal-details').html(data.body_html); // Use .html() for HTML content if needed
+        },
+        error: function () {
+          $('#modal-title').text('Error');
+          $('#modal-details').text('Unable to load product details.');
+        },
+      });
+    });
+
+    // Close the modal
+    $('.close').on('click', function () {
+      var modal = $('#modal');
+      modal.removeClass('show');
+      setTimeout(function () {
+        modal.css('display', 'none'); // Ensure modal is hidden after transition
+      }, 400); // Match the transition duration (0.4s)
+    });
+
+    // Close the modal when clicking outside of it
+    $(window).on('click', function (event) {
+      if ($(event.target).is('#modal')) {
+        var modal = $('#modal');
+        modal.removeClass('show');
+        setTimeout(function () {
+          modal.css('display', 'none'); // Ensure modal is hidden after transition
+        }, 400); // Match the transition duration (0.4s)
+      }
+    });
+
+    // Add event listeners to all wishlist buttons
+    wishlistButtons.forEach((button) => {
+      button.addEventListener('click', function () {
+        // Get the product ID from the clicked element
+        const productId = this.getAttribute('product-id');
+
+        // Retrieve current wishlist from local storage, or create a new array if not found
+        let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+        // Toggle product ID in the wishlist
+        if (wishlist.includes(productId)) {
+          wishlist = wishlist.filter((id) => id !== productId);
+          this.style.backgroundColor = '';
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.style.color = '';
+          }
+        } else {
+          wishlist.push(productId);
+          this.style.backgroundColor = '#70D1B7';
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.style.color = '#fff';
+          }
+        }
+
+        // Save updated wishlist to local storage
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      });
     });
   });
-});
-
 </script>
