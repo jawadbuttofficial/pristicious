@@ -319,7 +319,13 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <div class="row">
-      <div class="col-lg-6">Img</div>
+      <div class="col-lg-6">
+        <div class="quick-view-slider">
+          {% for image in product.images %}
+              <img src="{{ image.src | image_url }}" width="100%" height="100%" alt="{{ image.alt | escape }}" />
+          {% endfor %}
+        </div>
+      </div>
       <div class="col-lg-6">
         <h2 id="modal-title">
           <span class="placeholder col-6"></span>
@@ -404,6 +410,19 @@
       setTimeout(function () {
         modal.addClass('show');
       }, 10);
+
+      $('.quick-view-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+      nextArrow: '<button type="button" class="slick-next">Next</button>',
+    });
 
       // Fetch product details using the product title (handle)
       $.ajax({
