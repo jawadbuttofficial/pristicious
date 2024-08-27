@@ -360,7 +360,8 @@
     // Quick View Click Event
     $('.quick-view').on('click', function () {
       var productId = $(this).attr('product-id');
-      console.log('Quick view clicked for product:', productId);
+      var productTitle = $(this).attr('product-title')
+      console.log('Quick view clicked for product:', productTitle);
       var modal = $('#modal');
 
       modal.css('display', 'block');
@@ -369,7 +370,7 @@
       }, 10);
 
       $.ajax({
-        url: '/products/' + productId + '.js',
+        url: '/products/' + productTitle + '.js',
         dataType: 'json',
         success: function (data) {
           $('#modal-title').text(data.title);
