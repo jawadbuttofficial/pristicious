@@ -220,7 +220,7 @@
 
   /* Modal container style */
   .modal {
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -390,8 +390,8 @@
     <span class="close">&times;</span>
     <div class="row">
       <div class="col-lg-6">
-        <div class="placeholder-glow">
-            <span class="placeholder placeholder" style="height: 400px; width:100%;"></span>
+        <div class="">
+          <span class="placeholder product-img" style="height: 400px; width:100%;"></span>
         </div>
       </div>
       <div class="col-lg-6">
@@ -481,55 +481,45 @@
       });
     });
 
-    // Initialize the slick slider for quick view images
-    // $('.quick-view-slider').slick({
-    //   dots: false,
-    //   infinite: true,
-    //   speed: 300,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1,
-    //   autoplay: true,
-    //   autoplaySpeed: 2000,
-    //   arrows: true,
-    //   prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-    //   nextArrow: '<button type="button" class="slick-next">Next</button>',
-    // });
-
     // Quick View button click event
     $('.quick-view').on('click', function () {
       const productId = $(this).attr('product-id'); // Get the product ID
       const productTitle = $(this).attr('product-title'); // Get the product title (handle)
       const modal = $('#modal');
 
-      // Show the modal
-      modal.css('display', 'flex');
-      setTimeout(function () {
-        modal.addClass('show');
-      }, 10);
-
       // Fetch product details using the product title (handle)
       $.ajax({
         url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
         dataType: 'json',
         success: function (data) {
+          // Show the modal
+          modal.css('display', 'flex');
+          setTimeout(function () {
+            modal.addClass('show');
+          }, 10);
+
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
           $('#modal-details').html(data.description);
 
-          // Clear existing images in the slider
-          $('.quick-view-slider').slick('slickRemove', null, null, true);
+          if (data.images && data.images.length > 0) {
+            // Clear existing slides if any
+            $('.quick-view-slider').slick('slickRemove', null, null, true);
 
-          // // Add product images to the slider
-          // if (data.images && data.images.length > 0) {
-          //   data.images.forEach(function (imageUrl) {
-          //     $('.quick-view-slider').slick(
-          //       'slickAdd',
-          //       '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
-          //     );
-          //   });
-          // } else {
-          //   $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
-          // }
+            data.images.forEach(function (imageUrl) {
+              $('.quick-view-slider').slick(
+                'slickAdd',
+                '<div><img style="object-fit: cover; height: 500px;" class="quick-view-images" src="' +
+                  imageUrl +
+                  '" alt="' +
+                  data.title +
+                  '"></div>'
+              );
+            });
+          } else {
+            // Handle case when there are no images
+            $('.quick-view-slider').html('<p>No images available.</p>');
+          }
         },
         error: function () {
           // Handle errors
@@ -558,6 +548,5 @@
         }, 400);
       }
     });
-    
   });
 </script>
