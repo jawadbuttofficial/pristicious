@@ -361,10 +361,14 @@
 
     // Quick View Click Event
     $('.quick-view').on('click', function () {
+
       var productId = $(this).attr('product-id'); // Get the product ID
       var productTitle = $(this).attr('product-title'); // Get the product title (handle)
 
-      console.log('Quick view clicked for product:', productTitle);
+      // Update the handle to replace the spaces with dash
+      var productHandle = productTitle.replace(/\s+/g, '-');
+
+      console.log('Quick view clicked for product:', productHandle);
 
       var modal = $('#modal');
 
