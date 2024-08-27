@@ -322,7 +322,7 @@
       <div class="col-lg-6">
         <div class="quick-view-slider">
           {% for image in product.images %}
-              <img src="{{ image.src | image_url }}" width="100%" height="100%" alt="{{ image.alt | escape }}" />
+            <img src="{{ image.src | image_url }}" width="100%" height="100%" alt="{{ image.alt | escape }}">
           {% endfor %}
         </div>
       </div>
@@ -407,15 +407,6 @@
     $('.quick-view').on('click', function () {
       var productId = $(this).attr('product-id'); // Get the product ID
       var productTitle = $(this).attr('product-title'); // Get the product title (handle)
-
-      if (productTitle) {
-        // Update the handle to replace the spaces with dashes
-        var productHandle = productTitle.replace(/\s+/g, '-');
-        console.log('Quick view clicked for product:', productHandle);
-      } else {
-        console.error('Product title is undefined or null.');
-      }
-
       var modal = $('#modal');
 
       // Show the modal
@@ -435,6 +426,21 @@
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
           $('#modal-details').html(data.description);
+
+          // Clear existing images in the slider
+          $('.quick-view-slider').slick('slickRemove', null, null, true);
+
+          // Add product images to the slider
+          if (data.images && data.images.length > 0) {
+            data.images.forEach(function (imageUrl) {
+              $('.quick-view-slider').slick(
+                'slickAdd',
+                '<div><img src="' + imageUrl + '" alt="' + data.title + '"></div>'
+              );
+            });
+          } else {
+            $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
+          }
         },
         error: function () {
           // Handle errors
