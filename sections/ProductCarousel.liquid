@@ -519,17 +519,17 @@
           // Clear existing images in the slider
           $('.quick-view-slider').slick('slickRemove', null, null, true);
 
-          // Add product images to the slider
-          if (data.images && data.images.length > 0) {
-            data.images.forEach(function (imageUrl) {
-              $('.quick-view-slider').slick(
-                'slickAdd',
-                '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
-              );
-            });
-          } else {
-            $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
-          }
+          // // Add product images to the slider
+          // if (data.images && data.images.length > 0) {
+          //   data.images.forEach(function (imageUrl) {
+          //     $('.quick-view-slider').slick(
+          //       'slickAdd',
+          //       '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
+          //     );
+          //   });
+          // } else {
+          //   $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
+          // }
         },
         error: function () {
           // Handle errors
