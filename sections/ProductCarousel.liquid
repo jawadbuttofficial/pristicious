@@ -324,8 +324,8 @@
       <div class="col-lg-6">
         <div class="quick-view-slider">
           {% for image in product.images %}
-            {% comment %} <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}"> {% endcomment %}
-            <span class="placeholder min-vh-78 col-12"></span>
+            <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}">
+            {% comment %} <span class="placeholder min-vh-78 col-12"></span> {% endcomment %}
           {% endfor %}
         </div>
       </div>
