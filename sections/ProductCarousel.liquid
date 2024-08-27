@@ -306,7 +306,8 @@
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2 id="modal-title">Product Title</h2>
-    <p>Details about the product...</p>
+    <p id="modal-details">Details about the product...</p>
+    <!-- Add this line -->
   </div>
 </div>
 
@@ -341,16 +342,10 @@
 {% endschema %}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    // Debugging: Check if jQuery is loaded
-    console.log($);
-
-    // Get all wishlist elements
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
 
-    // Retrieve current wishlist from local storage, or create a new array if not found
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    // Apply active styles to buttons that are in the wishlist
     wishlistButtons.forEach((button) => {
       const productId = button.getAttribute('product-id');
       if (wishlist.includes(productId)) {
@@ -362,25 +357,23 @@
       }
     });
 
-    // Debugging: Check if quick-view triggers are working
-    $('[data-trigger="quick-view"]').on('click', function () {
+    // Quick View Click Event
+    $('.quick-view').on('click', function () {
       var productId = $(this).attr('product-id');
-      console.log('Quick view clicked for product:', productId); // Debugging log
+      console.log('Quick view clicked for product:', productId);
       var modal = $('#modal');
 
-      // Show the modal with transition
-      modal.css('display', 'block'); // Ensure modal is displayed
+      modal.css('display', 'block');
       setTimeout(function () {
         modal.addClass('show');
-      }, 10); // Slight delay for CSS transition to take effect
+      }, 10);
 
-      // Fetch product data
       $.ajax({
         url: '/products/' + productId + '.js',
         dataType: 'json',
         success: function (data) {
           $('#modal-title').text(data.title);
-          $('#modal-details').html(data.body_html); // Use .html() for HTML content if needed
+          $('#modal-details').html(data.body_html);
         },
         error: function () {
           $('#modal-title').text('Error');
@@ -389,36 +382,30 @@
       });
     });
 
-    // Close the modal
+    // Close Modal
     $('.close').on('click', function () {
       var modal = $('#modal');
       modal.removeClass('show');
       setTimeout(function () {
-        modal.css('display', 'none'); // Ensure modal is hidden after transition
-      }, 400); // Match the transition duration (0.4s)
+        modal.css('display', 'none');
+      }, 400);
     });
 
-    // Close the modal when clicking outside of it
     $(window).on('click', function (event) {
       if ($(event.target).is('#modal')) {
         var modal = $('#modal');
         modal.removeClass('show');
         setTimeout(function () {
-          modal.css('display', 'none'); // Ensure modal is hidden after transition
-        }, 400); // Match the transition duration (0.4s)
+          modal.css('display', 'none');
+        }, 400);
       }
     });
 
-    // Add event listeners to all wishlist buttons
     wishlistButtons.forEach((button) => {
       button.addEventListener('click', function () {
-        // Get the product ID from the clicked element
         const productId = this.getAttribute('product-id');
-
-        // Retrieve current wishlist from local storage, or create a new array if not found
         let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-        // Toggle product ID in the wishlist
         if (wishlist.includes(productId)) {
           wishlist = wishlist.filter((id) => id !== productId);
           this.style.backgroundColor = '';
@@ -435,7 +422,6 @@
           }
         }
 
-        // Save updated wishlist to local storage
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
       });
     });
