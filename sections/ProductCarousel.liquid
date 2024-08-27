@@ -390,6 +390,19 @@
       }
     });
 
+    $('.quick-view-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+      nextArrow: '<button type="button" class="slick-next">Next</button>',
+    });
+
     // Quick View Click Event
     $('.quick-view').on('click', function () {
       var productId = $(this).attr('product-id'); // Get the product ID
@@ -410,19 +423,6 @@
       setTimeout(function () {
         modal.addClass('show');
       }, 10);
-
-      $('.quick-view-slider').slick({
-      dots: false,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      arrows: true,
-      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-      nextArrow: '<button type="button" class="slick-next">Next</button>',
-    });
 
       // Fetch product details using the product title (handle)
       $.ajax({
