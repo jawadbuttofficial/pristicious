@@ -515,7 +515,7 @@
               data.images.forEach(function (imageUrl) {
                 $('.quick-view-slider').slick(
                   'slickAdd',
-                  '<div><img style="object-fit: cover; height: 100%; width: 100%; position: center;" class="quick-view-images" src="' +
+                  '<div><img style="object-fit: cover; min-height: 650px; width: 100%; position: center;" class="quick-view-images" src="' +
                     imageUrl +
                     '" alt="' +
                     data.title +
@@ -525,7 +525,7 @@
             } else {
               // Display only one image without initializing the slider
               $('.image-container').html(
-                '<img style="object-fit: cover; height: 100%; width: 100%; position: center;" class="quick-view-images" src="' +
+                '<img style="object-fit: cover; min-height: 650px; width: 100%; position: center;" class="quick-view-images" src="' +
                   data.images[0] +
                   '" alt="' +
                   data.title +
@@ -545,23 +545,26 @@
       });
     });
 
+    // Function to reset modal content to placeholders
+    function resetModal() {
+      $('#modal-title').html('<span class="placeholder col-6"></span>');
+      $('#modal-details').html(`
+        <span class="placeholder col-12"></span>
+        <span class="placeholder col-12"></span>
+        <span class="placeholder col-12"></span>
+        <span class="placeholder col-12"></span>
+        <span class="placeholder col-12"></span>
+      `);
+      $('.image-container').html('<span class="placeholder product-img" style="height: 650px; width:100%;"></span>');
+    }
+
     // Close Modal
     $('.close').on('click', function () {
       const modal = $('#modal');
       modal.removeClass('show');
       setTimeout(function () {
         modal.css('display', 'none');
-
-        // Reset modal content to placeholders
-        $('#modal-title').html('<span class="placeholder col-6"></span>');
-        $('#modal-details').html(`
-          <span class="placeholder col-12"></span>
-          <span class="placeholder col-12"></span>
-          <span class="placeholder col-12"></span>
-          <span class="placeholder col-12"></span>
-          <span class="placeholder col-12"></span>
-        `);
-        $('.image-container').html('<span class="placeholder product-img" style="height: 500px; width:100%;"></span>');
+        resetModal(); // Reset modal content
       }, 400);
     });
 
@@ -572,17 +575,7 @@
         modal.removeClass('show');
         setTimeout(function () {
           modal.css('display', 'none');
-
-          // Reset modal content to placeholders
-          $('#modal-title').html('<span class="placeholder col-6"></span>');
-          $('#modal-details').html(`
-            <span class="placeholder col-12"></span>
-            <span class="placeholder col-12"></span>
-            <span class="placeholder col-12"></span>
-            <span class="placeholder col-12"></span>
-            <span class="placeholder col-12"></span>
-          `);
-          $('.image-container').html('<span class="placeholder product-img" style="height: 500px; width:100%;"></span>');
+          resetModal(); // Reset modal content
         }, 400);
       }
     });
