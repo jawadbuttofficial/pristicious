@@ -217,6 +217,8 @@
     align-items: center;
   }
 </style>
+
+
 <div class="container mt-5">
   <div class="row d-flex justify-content-between">
     <div class="col-lg-6 col-md-12">
@@ -322,8 +324,8 @@
       <div class="col-lg-6">
         <div class="quick-view-slider">
           {% for image in product.images %}
-            <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}">
-            {% comment %} <span class="placeholder min-vh-78 col-12"></span> {% endcomment %}
+            {% comment %} <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}"> {% endcomment %}
+            <span class="placeholder min-vh-78 col-12"></span>
           {% endfor %}
         </div>
       </div>
@@ -391,18 +393,18 @@
       }
     });
 
-    // $('.quick-view-slider').slick({
-    //   dots: false,
-    //   infinite: true,
-    //   speed: 300,
-    //   slidesToShow: 1,
-    //   slidesToScroll: 1,
-    //   autoplay: true,
-    //   autoplaySpeed: 2000,
-    //   arrows: true,
-    //   prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-    //   nextArrow: '<button type="button" class="slick-next">Next</button>',
-    // });
+    $('.quick-view-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+      nextArrow: '<button type="button" class="slick-next">Next</button>',
+    });
 
     // Quick View Click Event
     $('.quick-view').on('click', function () {
@@ -429,19 +431,19 @@
           $('#modal-details').html(data.description);
 
           // Clear existing images in the slider
-          // $('.quick-view-slider').slick('slickRemove', null, null, true);
+          $('.quick-view-slider').slick('slickRemove', null, null, true);
 
-          // Add product images to the slider
-          // if (data.images && data.images.length > 0) {
-          //   data.images.forEach(function (imageUrl) {
-          //     $('.quick-view-slider').slick(
-          //       'slickAdd',
-          //       '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
-          //     );
-          //   });
-          // } else {
-          //   $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
-          // }
+          Add product images to the slider
+          if (data.images && data.images.length > 0) {
+            data.images.forEach(function (imageUrl) {
+              $('.quick-view-slider').slick(
+                'slickAdd',
+                '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
+              );
+            });
+          } else {
+            $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
+          }
         },
         error: function () {
           // Handle errors
