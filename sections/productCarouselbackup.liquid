@@ -1,10 +1,7 @@
 <style>
-  /* Adjust the width of the slick track */
   .slick-track {
     width: 100%;
   }
-
-  /* Style for the subtitle */
   .sub-title {
     font-size: 14px;
     font-weight: 600;
@@ -12,16 +9,12 @@
     text-transform: uppercase;
     letter-spacing: 1px;
   }
-
-  /* Style for the main title */
   .title {
     font-size: 32px;
     color: #4d4d4d;
     font-weight: 600;
     margin: 0px;
   }
-
-  /* Style for the slider navigation arrows */
   .slider-nav-arrow {
     height: 50px;
     width: 50px;
@@ -33,42 +26,28 @@
     cursor: pointer;
     box-shadow: 5px 5px 10px #0000001a;
   }
-
-  /* Hover effect for slider navigation arrows */
   .slider-nav-arrow:hover {
     background-color: #70d1b7;
     box-shadow: 2px 2px 10px #0000001a;
   }
-
-  /* Style for the SVG icons inside the navigation arrows */
   .slider-nav-arrow svg {
     margin-top: -8px;
   }
-
-  /* Color for the SVG path */
   .slider-nav-arrow svg path {
     fill: #888;
     vertical-align: unset !important;
   }
-
-  /* Hover effect for the SVG path */
   .slider-nav-arrow:hover svg path {
     fill: #fff;
   }
-
-  /* Hide mobile navigation arrows by default */
   .nav-arrow-mobile {
     display: none;
   }
-
-  /* Style for the product images */
   .product-image {
     min-height: 400px;
     object-fit: cover;
     max-height: 400px;
   }
-
-  /* Style for the product cards */
   .slider-product-card {
     min-height: 200px;
     min-width: 200px;
@@ -77,8 +56,6 @@
     overflow: hidden;
     width: 100%;
   }
-
-  /* Style for the product card action buttons */
   .product-card-action {
     display: flex;
     flex-direction: column;
@@ -92,13 +69,9 @@
     z-index: 999;
     transition-duration: 0.5s;
   }
-
-  /* Show the product card action buttons on hover */
   .slider-product-card:hover .product-card-action {
     transform: translateX(0px) !important;
   }
-
-  /* Style for the individual action buttons */
   .product-card-action span {
     height: 50px;
     width: 50px;
@@ -113,37 +86,25 @@
     justify-content: center;
     align-items: center;
   }
-
-  /* Style for the icons inside the action buttons */
   .product-card-action span i {
     color: #888;
     margin-top: -4px;
   }
-
-  /* Hover effect for the action buttons */
   .product-card-action span:hover {
     background-color: #70d1b7;
   }
-
-  /* Hover effect for the icons inside the action buttons */
   .product-card-action span:hover i {
     color: #fff;
   }
-
-  /* Hover effect for SVG path inside the action buttons */
   .product-card-action span:hover span svg path {
     fill: #fff !important;
     stroke: #fff !important;
   }
-
-  /* Style for the Add to Cart button container */
   .add-to-cart {
     width: 100%;
     display: flex;
     justify-content: center;
   }
-
-  /* Style for the Add to Cart link */
   .add-to-cart a {
     width: 90%;
     padding: 10px;
@@ -162,49 +123,33 @@
     transition: 0.5s;
     z-index: 999;
   }
-
-  /* Hover effect for the Add to Cart link */
   .add-to-cart a:hover {
     background-color: #70d1b7;
   }
-
-  /* Show the Add to Cart button on hover */
   .slider-product-card:hover .add-to-cart a {
     opacity: 1;
   }
-
-  /* Adjust the spacing between slick slides */
   .slick-slide {
     margin-right: 20px !important;
   }
-
-  /* Style for product title */
   .slider-product-card .product-info h1 {
     font-size: 18px;
     font-weight: 500;
   }
-
-  /* Style for product price */
   .slider-product-card .product-info p {
     font-size: 14px;
     font-weight: 400;
   }
-
-  /* Hide large screen navigation arrows on smaller screens */
   @media screen and (max-width: 992px) {
     .lg-slider-nav {
       display: none !important;
     }
   }
-
-  /* Show mobile navigation arrows on smaller screens */
   @media screen and (max-width: 992px) {
     .nav-arrow-mobile {
       display: flex;
     }
   }
-
-  /* Style for the hover image in the product card */
   .hover-image {
     position: absolute;
     transition: 0.5s ease-in-out;
@@ -212,13 +157,11 @@
     top: 0;
     opacity: 0;
   }
-
-  /* Show the hover image on hover */
   .slider-product-card:hover .hover-image {
     opacity: 1;
   }
 
-  /* Modal container style */
+  /* Modal container */
   .modal {
     display: none;
     position: fixed;
@@ -229,7 +172,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease; /* Smooth transition */
   }
 
   /* Show modal class */
@@ -238,7 +181,7 @@
     opacity: 1;
   }
 
-  /* Modal content style */
+  /* Modal content */
   .modal-content {
     background-color: #fff;
     margin: auto;
@@ -247,16 +190,16 @@
     border-radius: 8px;
     width: 72%;
     max-width: 1320px;
-    transition: transform 0.4s ease;
-    transform: translateY(-30px);
+    transition: transform 0.4s ease; /* Smooth transition */
+    transform: translateY(-30px); /* Start position */
   }
 
   /* Show modal content class */
   .modal.show .modal-content {
-    transform: translateY(0);
+    transform: translateY(0); /* Final position */
   }
 
-  /* Close button style */
+  /* Close button */
   .close {
     font-size: 28px;
     height: 40px;
@@ -275,6 +218,7 @@
   }
 </style>
 
+
 <div class="container mt-5">
   <div class="row d-flex justify-content-between">
     <div class="col-lg-6 col-md-12">
@@ -282,13 +226,11 @@
       <h2 class="title">Home Decoration</h2>
     </div>
     <div class="p-slider-nav lg-slider-nav col-lg-6 col-md-12 d-flex justify-content-end align-items-end px-4 gap-2">
-      <!-- Previous navigation arrow -->
       <span class="prev slider-nav-arrow">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" transform="matrix(-1, 0, 0, 1, 0, 0)">
           <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
         </svg>
       </span>
-      <!-- Next navigation arrow -->
       <span class="next slider-nav-arrow">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M9.71069 18.2929C10.1012 18.6834 10.7344 18.6834 11.1249 18.2929L16.0123 13.4006C16.7927 12.6195 16.7924 11.3537 16.0117 10.5729L11.1213 5.68254C10.7308 5.29202 10.0976 5.29202 9.70708 5.68254C9.31655 6.07307 9.31655 6.70623 9.70708 7.09676L13.8927 11.2824C14.2833 11.6729 14.2833 12.3061 13.8927 12.6966L9.71069 16.8787C9.32016 17.2692 9.32016 17.9023 9.71069 18.2929Z" fill="currentColor"></path>
@@ -296,7 +238,6 @@
       </span>
     </div>
   </div>
-
   <div class="row mt-3">
     {% if section.settings.collection != blank %}
       {% assign collection = collections[section.settings.collection] %}
@@ -305,9 +246,8 @@
         <div class="product-slider">
           {% for product in products %}
             <div class="slider-product-card">
-              <!-- Product image with hover effect -->
-              <a href="{{ product.url }}">
-                <img
+              <a href="{{ product.url }}"
+                ><img
                   src="{{ product.featured_image | image_url }}"
                   alt="{{ product.title }}"
                   width="100%"
@@ -325,22 +265,15 @@
                 {% endif %}
               </a>
 
-              <!-- Product action buttons (Quick View and Add to Wishlist) -->
               <div class="product-card-action">
-                <span class="quick-view" product-title="{{ product.handle }}" product-id="{{ product.id }}">
-                  <i class="bi bi-eye"></i>
-                </span>
-                <span class="add-to-wishlist" product-id="{{ product.id }}">
-                  <i class="bi bi-heart"></i>
-                </span>
+                <span class="quick-view" product-title="{{ product.handle }}" product-id="{{ product.id }}"
+                  ><i class="bi bi-eye"></i
+                ></span>
+                <span class="add-to-wishlist" product-id="{{ product.id }}"><i class="bi bi-heart"></i></span>
               </div>
-
-              <!-- Add to Cart button -->
               <div class="add-to-cart">
                 <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}">ADD TO CART</a>
               </div>
-
-              <!-- Product information (title, price, variants) -->
               <div class="product-info">
                 <h1>{{ product.title }}</h1>
                 <p>{{ product.price | money }}</p>
@@ -364,8 +297,6 @@
       {% endif %}
     {% endif %}
   </div>
-
-  <!-- Mobile navigation arrows -->
   <div class="row flex-nowrap nav-arrow-mobile mt-3">
     <div class="col d-flex justify-content-end align-self-center">
       <span class="prev slider-nav-arrow">
@@ -384,7 +315,8 @@
   </div>
 </div>
 
-<!-- Modal container for Quick View -->
+{% comment %} modal Start {% endcomment %}
+
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -393,6 +325,7 @@
         <div class="quick-view-slider">
           {% for image in product.images %}
             <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}">
+            {% comment %} <span class="placeholder min-vh-78 col-12"></span> {% endcomment %}
           {% endfor %}
         </div>
       </div>
@@ -409,43 +342,20 @@
         </p>
       </div>
     </div>
+
+    <!-- Add this line -->
   </div>
 </div>
 
-{% schema %}
-{
-  "name": "Product Slider",
-  "settings": [
-    {
-      "type": "collection",
-      "id": "collection",
-      "label": "Select Collection"
-    },
-    {
-      "type": "range",
-      "id": "product_limit",
-      "label": "Number of Products",
-      "default": 4,
-      "step": 1,
-      "min": 1,
-      "max": 12
-    }
-  ],
-  "presets": [
-    {
-      "name": "Product Slider",
-      "category": "Custom"
-    }
-  ]
-}
-{% endschema %}
+{% comment %} Modal End {% endcomment %}
+
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
+
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-    // Highlight wishlist items that are already in the wishlist
     wishlistButtons.forEach((button) => {
       const productId = button.getAttribute('product-id');
       if (wishlist.includes(productId)) {
@@ -457,7 +367,85 @@
       }
     });
 
-    // Wishlist button click event
+    $('.quick-view-slider').slick({
+      dots: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: true,
+      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+      nextArrow: '<button type="button" class="slick-next">Next</button>',
+    });
+
+    // Quick View Click Event
+    $('.quick-view').on('click', function () {
+      var productId = $(this).attr('product-id'); // Get the product ID
+      var productTitle = $(this).attr('product-title'); // Get the product title (handle)
+      var modal = $('#modal');
+
+      // Show the modal
+      modal.css('display', 'flex');
+      setTimeout(function () {
+        modal.addClass('show');
+      }, 10);
+
+      // Fetch product details using the product title (handle)
+      $.ajax({
+        url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
+        dataType: 'json',
+        success: function (data) {
+          // Log the product data to the console
+          console.log('Product Data:', data);
+
+          // Populate the modal with the product details
+          $('#modal-title').text(data.title);
+          $('#modal-details').html(data.description);
+
+          // Clear existing images in the slider
+          $('.quick-view-slider').slick('slickRemove', null, null, true);
+
+          Add product images to the slider
+          if (data.images && data.images.length > 0) {
+            data.images.forEach(function (imageUrl) {
+              $('.quick-view-slider').slick(
+                'slickAdd',
+                '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
+              );
+            });
+          } else {
+            $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
+          }
+        },
+        error: function () {
+          // Handle errors
+          $('#modal-title').text('Error');
+          $('#modal-details').text('Unable to load product details.');
+        },
+      });
+    });
+
+    // Close Modal
+    $('.close').on('click', function () {
+      var modal = $('#modal');
+      modal.removeClass('show');
+      setTimeout(function () {
+        modal.css('display', 'none');
+      }, 400);
+    });
+
+    $(window).on('click', function (event) {
+      if ($(event.target).is('#modal')) {
+        var modal = $('#modal');
+        modal.removeClass('show');
+        setTimeout(function () {
+          modal.css('display', 'none');
+        }, 400);
+      }
+    });
+
     wishlistButtons.forEach((button) => {
       button.addEventListener('click', function () {
         const productId = this.getAttribute('product-id');
@@ -482,84 +470,5 @@
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
       });
     });
-
-    // Initialize the slick slider for quick view images
-    $('.quick-view-slider').slick({
-      dots: false,
-      infinite: true,
-      speed: 300,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 2000,
-      arrows: true,
-      prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-      nextArrow: '<button type="button" class="slick-next">Next</button>',
-    });
-
-    // Quick View button click event
-    $('.quick-view').on('click', function () {
-      const productId = $(this).attr('product-id'); // Get the product ID
-      const productTitle = $(this).attr('product-title'); // Get the product title (handle)
-      const modal = $('#modal');
-
-      // Show the modal
-      modal.css('display', 'flex');
-      setTimeout(function () {
-        modal.addClass('show');
-      }, 10);
-
-      // Fetch product details using the product title (handle)
-      $.ajax({
-        url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
-        dataType: 'json',
-        success: function (data) {
-          // Populate the modal with the product details
-          $('#modal-title').text(data.title);
-          $('#modal-details').html(data.description);
-
-          // Clear existing images in the slider
-          $('.quick-view-slider').slick('slickRemove', null, null, true);
-
-          // Add product images to the slider
-          if (data.images && data.images.length > 0) {
-            data.images.forEach(function (imageUrl) {
-              $('.quick-view-slider').slick(
-                'slickAdd',
-                '<div><img class="quick-view-images" src="' + imageUrl + '" alt="' + data.title + '"></div>'
-              );
-            });
-          } else {
-            $('.quick-view-slider').slick('slickAdd', '<div><p>No images available</p></div>');
-          }
-        },
-        error: function () {
-          // Handle errors
-          $('#modal-title').text('Error');
-          $('#modal-details').text('Unable to load product details.');
-        },
-      });
-    });
-
-    // Close Modal
-    $('.close').on('click', function () {
-      const modal = $('#modal');
-      modal.removeClass('show');
-      setTimeout(function () {
-        modal.css('display', 'none');
-      }, 400);
-    });
-
-    // Close the modal when clicking outside of it
-    $(window).on('click', function (event) {
-      if ($(event.target).is('#modal')) {
-        const modal = $('#modal');
-        modal.removeClass('show');
-        setTimeout(function () {
-          modal.css('display', 'none');
-        }, 400);
-      }
-    });
-    
   });
 </script>
