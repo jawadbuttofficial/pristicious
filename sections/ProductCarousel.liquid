@@ -254,7 +254,9 @@
 
               <div class="product-card-action">
                 <span class="quick-view" product-id="{{ product.id }}"><i class="bi bi-eye"></i></span>
-                <span class="add-to-wishlist" product-title="{{ product.title }}" product-id="{{ product.id }}"><i class="bi bi-heart"></i></span>
+                <span class="add-to-wishlist" product-title="{{ product.title }}" product-id="{{ product.id }}"
+                  ><i class="bi bi-heart"></i
+                ></span>
               </div>
               <div class="add-to-cart">
                 <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}">ADD TO CART</a>
@@ -359,24 +361,30 @@
 
     // Quick View Click Event
     $('.quick-view').on('click', function () {
-      var productId = $(this).attr('product-id');
-      var productTitle = $(this).attr('product-title')
+      var productId = $(this).attr('product-id'); // Get the product ID
+      var productTitle = $(this).attr('product-title'); // Get the product title (handle)
+
       console.log('Quick view clicked for product:', productTitle);
+
       var modal = $('#modal');
 
+      // Show the modal
       modal.css('display', 'block');
       setTimeout(function () {
         modal.addClass('show');
       }, 10);
 
+      // Fetch product details using the product title (handle)
       $.ajax({
-        url: '/products/' + productTitle + '.js',
+        url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
         dataType: 'json',
         success: function (data) {
+          // Populate the modal with the product details
           $('#modal-title').text(data.title);
           $('#modal-details').html(data.body_html);
         },
         error: function () {
+          // Handle errors
           $('#modal-title').text('Error');
           $('#modal-details').text('Unable to load product details.');
         },
