@@ -253,10 +253,10 @@
               </a>
 
               <div class="product-card-action">
-                <span class="quick-view"  product-title="{{ product.title }}" product-id="{{ product.id }}"><i class="bi bi-eye"></i></span>
-                <span class="add-to-wishlist" product-id="{{ product.id }}"
-                  ><i class="bi bi-heart"></i
+                <span class="quick-view" product-title="{{ product.title }}" product-id="{{ product.id }}"
+                  ><i class="bi bi-eye"></i
                 ></span>
+                <span class="add-to-wishlist" product-id="{{ product.id }}"><i class="bi bi-heart"></i></span>
               </div>
               <div class="add-to-cart">
                 <a href="{{ routes.cart_add_url }}?id={{ product.variants.first.id }}">ADD TO CART</a>
@@ -382,9 +382,12 @@
 
       // Fetch product details using the product title (handle)
       $.ajax({
-        url: 'https://pristicious.myshopify.com/products/gardening-hand-trowel', // Use the product handle to fetch the data
+        url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
         dataType: 'json',
         success: function (data) {
+          // Log the product data to the console
+          console.log('Product Data:', data);
+
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
           $('#modal-details').html(data.body_html);
