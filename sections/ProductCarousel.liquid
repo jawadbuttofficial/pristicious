@@ -390,10 +390,8 @@
     <span class="close">&times;</span>
     <div class="row">
       <div class="col-lg-6">
-        <div class="quick-view-slider">
-          {% for image in product.images %}
-            <img src="{{ image.src | image_url }}" width="100%" height="500px" style="object-fit: cover;" alt="{{ image.alt | escape }}">
-          {% endfor %}
+        <div class="quick-view-slider placeholder-glow">
+            <span class="placeholder placeholder" style="height: 400px; width:100%;"></span>
         </div>
       </div>
       <div class="col-lg-6">
