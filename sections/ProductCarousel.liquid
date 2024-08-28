@@ -371,19 +371,6 @@
               <div class="product-info">
                 <h1>{{ product.title }}</h1>
                 <p>{{ product.price | money }}</p>
-                {% if product.variants.size > 1 %}
-                  <div class="variant-images">
-                    {% for variant in product.variants %}
-                      <img
-                        src="{{ variant.image.src }}"
-                        height="60px"
-                        width="60px"
-                        alt="{{ variant.title }}"
-                        class="variant-circle"
-                      >
-                    {% endfor %}
-                  </div>
-                {% endif %}
               </div>
             </div>
           {% endfor %}
