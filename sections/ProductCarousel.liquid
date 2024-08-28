@@ -587,12 +587,12 @@
           $('#modal-title').text(data.title);
 
           // Handle product price
-          if (data.price && data.compare_at_price) {
-            $('#orignal-price').text(Shopify.formatMoney(data.compare_at_price));
-            $('#sale-price').text(Shopify.formatMoney(data.price));
-          } else {
-            $('#product-orignal-price').html(Shopify.formatMoney(data.price));
-          }
+          // if (data.price && data.compare_at_price) {
+          //   $('#orignal-price').text(Shopify.formatMoney(data.compare_at_price));
+          //   $('#sale-price').text(Shopify.formatMoney(data.price));
+          // } else {
+          //   $('#product-orignal-price').html(Shopify.formatMoney(data.price));
+          // }
 
           if (data.images && data.images.length > 0) {
             // Clear existing content
