@@ -611,6 +611,24 @@
             // Handle case when there are no images
             $('.image-container').html('<p>No images available.</p>');
           }
+          $('.add-to-cart-btn').off('click').on('click', function () {
+            const quantity = parseInt($('.select-quanity .m-0').text());
+            $.ajax({
+              type: 'POST',
+              url: '/cart/add.js',
+              data: {
+                quantity: quantity,
+                id: data.variants[0].id // Add the first variant to the cart
+              },
+              dataType: 'json',
+              success: function () {
+                alert('Product added to cart!');
+              },
+              error: function () {
+                alert('Error adding product to cart.');
+              }
+            });
+          });
         },
         error: function () {
           // Handle errors
