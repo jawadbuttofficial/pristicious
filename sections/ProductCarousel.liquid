@@ -342,11 +342,11 @@
   .bi {
     cursor: pointer;
   }
-  .option-lable{
+  .option-lable {
     display: block;
   }
-  .option-value{
-    padding: 10px;
+  .option-value {
+    padding: 10px 20px;
     background-color: #f5f5f5;
     margin-right: 10px;
     border-radius: 10px;
@@ -691,7 +691,7 @@
         optionValues.forEach(function (value) {
           const radioInput = `
             <label class="option-value">
-              <input type="radio" name="option-${index}" value="${value}">
+              <input class="option-value-radio" type="radio" name="option-${index}" value="${value}">
               ${value}
             </label>
           `;
@@ -702,6 +702,24 @@
         optionsContainer.append(optionGroup);
       });
     }
+    // Select all radio buttons with class 'option-value-radio'
+    var radioButtons = document.querySelectorAll('input.option-value-radio[type="radio"]');
+    var labels = document.querySelectorAll('.option-value');
+
+    radioButtons.forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        // Remove background color from all labels
+        labels.forEach(function (label) {
+          label.style.backgroundColor = '';
+        });
+
+        // Add background color to the selected option's label
+        if (radio.checked) {
+          var label = radio.closest('label.option-value'); // Select the corresponding label
+          label.style.backgroundColor = 'green';
+        }
+      });
+    });
 
     // Function to get the selected variant ID based on the selected options
     function getSelectedVariantId(variants) {
