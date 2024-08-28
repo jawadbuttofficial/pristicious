@@ -282,12 +282,13 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 999;
     }
     .quick-view-slider .slick-next:hover,
     .quick-view-slider .slick-prev:hover{
       background: #25a382;
     }
-    .quick-view-slider .slick-next{1
+    .quick-view-slider .slick-next{
       right: 0px;
     }
     .quick-view-slider .slick-prev{
@@ -295,6 +296,9 @@
     }
     .slick-next:before , .slick-prev::before {
         margin-bottom: -4px;
+    }
+    .quick-view-slider .slick-slide{
+      margin: 10px !important;
     }
 </style>
 
