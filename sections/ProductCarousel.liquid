@@ -352,6 +352,10 @@
     border-radius: 10px;
     cursor: pointer;
   }
+  label.option-value.selected {
+    background-color: #25a382;
+    color: #fff;
+  }
 </style>
 
 <div class="container mt-5">
@@ -702,25 +706,13 @@
         optionsContainer.append(optionGroup);
       });
     }
-    // Select all radio buttons with class 'option-value-radio'
-    var radioButtons = document.querySelectorAll('input.option-value-radio[type="radio"]');
-    var labels = document.querySelectorAll('.option-value');
+    $('.product-options').on('change', 'input.option-value-radio', function () {
+      // Remove the class from all labels
+      $('.option-value').removeClass('selected');
 
-    radioButtons.forEach(function (radio) {
-      radio.addEventListener('change', function () {
-        // Remove background color from all labels
-        labels.forEach(function (label) {
-          label.style.backgroundColor = '#f5f5f5';
-        });
-
-        // Add background color to the selected option's label
-        if (radio.checked) {
-          var label = radio.closest('label.option-value'); // Select the corresponding label
-          label.style.backgroundColor = '#11B387';
-        }
-      });
+      // Add the class to the selected option's label
+      $(this).closest('label.option-value').addClass('selected');
     });
-
     // Function to get the selected variant ID based on the selected options
     function getSelectedVariantId(variants) {
       const selectedOptions = [];
