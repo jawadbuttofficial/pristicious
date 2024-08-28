@@ -342,6 +342,9 @@
   .bi {
     cursor: pointer;
   }
+  .option-lable{
+    display: block;
+  }
 </style>
 
 <div class="container mt-5">
@@ -675,7 +678,7 @@
         const optionGroup = $('<div></div>').addClass('option-group').attr('data-option-index', index);
 
         // Add label
-        optionGroup.append('<label>' + optionName + '</label>');
+        optionGroup.append('<label class="option-lable" >' + optionName + '</label>');
 
         // Add radio buttons for each option value
         optionValues.forEach(function (value) {
