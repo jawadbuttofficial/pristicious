@@ -1,309 +1,317 @@
 <style>
-    /* Adjust the width of the slick track */
-    .slick-track {
-      width: 100%;
-    }
+  /* Adjust the width of the slick track */
+  .slick-track {
+    width: 100%;
+  }
 
-    /* Style for the subtitle */
-    .sub-title {
-      font-size: 14px;
-      font-weight: 600;
-      color: #a1a1a1;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+  /* Style for the subtitle */
+  .sub-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #a1a1a1;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
 
-    /* Style for the main title */
-    .title {
-      font-size: 32px;
-      color: #4d4d4d;
-      font-weight: 600;
-      margin: 0px;
-    }
+  /* Style for the main title */
+  .title {
+    font-size: 32px;
+    color: #4d4d4d;
+    font-weight: 600;
+    margin: 0px;
+  }
 
-    /* Style for the slider navigation arrows */
-    .slider-nav-arrow {
-      height: 50px;
-      width: 50px;
-      border-radius: 50px;
-      background-color: #fff;
-      padding: 13px;
-      border: 1px solid #e7e8eb;
-      transition: 0.3s;
-      cursor: pointer;
-      box-shadow: 5px 5px 10px #0000001a;
-    }
+  /* Style for the slider navigation arrows */
+  .slider-nav-arrow {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: #fff;
+    padding: 13px;
+    border: 1px solid #e7e8eb;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #0000001a;
+  }
 
-    /* Hover effect for slider navigation arrows */
-    .slider-nav-arrow:hover {
-      background-color: #70d1b7;
-      box-shadow: 2px 2px 10px #0000001a;
-    }
+  /* Hover effect for slider navigation arrows */
+  .slider-nav-arrow:hover {
+    background-color: #70d1b7;
+    box-shadow: 2px 2px 10px #0000001a;
+  }
 
-    /* Style for the SVG icons inside the navigation arrows */
-    .slider-nav-arrow svg {
-      margin-top: -8px;
-    }
+  /* Style for the SVG icons inside the navigation arrows */
+  .slider-nav-arrow svg {
+    margin-top: -8px;
+  }
 
-    /* Color for the SVG path */
-    .slider-nav-arrow svg path {
-      fill: #888;
-      vertical-align: unset !important;
-    }
+  /* Color for the SVG path */
+  .slider-nav-arrow svg path {
+    fill: #888;
+    vertical-align: unset !important;
+  }
 
-    /* Hover effect for the SVG path */
-    .slider-nav-arrow:hover svg path {
-      fill: #fff;
-    }
+  /* Hover effect for the SVG path */
+  .slider-nav-arrow:hover svg path {
+    fill: #fff;
+  }
 
-    /* Hide mobile navigation arrows by default */
+  /* Hide mobile navigation arrows by default */
+  .nav-arrow-mobile {
+    display: none;
+  }
+
+  /* Style for the product images */
+  .product-image {
+    min-height: 400px;
+    object-fit: cover;
+    max-height: 400px;
+  }
+
+  /* Style for the product cards */
+  .slider-product-card {
+    min-height: 200px;
+    min-width: 200px;
+    margin-right: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  /* Style for the product card action buttons */
+  .product-card-action {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    align-items: flex-end;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(60px);
+    z-index: 999;
+    transition-duration: 0.5s;
+  }
+
+  /* Show the product card action buttons on hover */
+  .slider-product-card:hover .product-card-action {
+    transform: translateX(0px) !important;
+  }
+
+  /* Style for the individual action buttons */
+  .product-card-action span {
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    background-color: #fff;
+    padding: 13px;
+    border: 1px solid #e7e8eb;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px #0000001a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Style for the icons inside the action buttons */
+  .product-card-action span i {
+    color: #888;
+    margin-top: -4px;
+  }
+
+  /* Hover effect for the action buttons */
+  .product-card-action span:hover {
+    background-color: #70d1b7;
+  }
+
+  /* Hover effect for the icons inside the action buttons */
+  .product-card-action span:hover i {
+    color: #fff;
+  }
+
+  /* Hover effect for SVG path inside the action buttons */
+  .product-card-action span:hover span svg path {
+    fill: #fff !important;
+    stroke: #fff !important;
+  }
+
+  /* Style for the Add to Cart button container */
+  .add-to-cart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Style for the Add to Cart link */
+  .add-to-cart a {
+    width: 90%;
+    padding: 10px;
+    background-color: #000;
+    border-radius: 0px;
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: -60px;
+    margin-bottom: 24px;
+    opacity: 0;
+    transition: 0.5s;
+    z-index: 999;
+  }
+
+  /* Hover effect for the Add to Cart link */
+  .add-to-cart a:hover {
+    background-color: #70d1b7;
+  }
+
+  /* Show the Add to Cart button on hover */
+  .slider-product-card:hover .add-to-cart a {
+    opacity: 1;
+  }
+
+  /* Adjust the spacing between slick slides */
+  .slick-slide {
+    margin-right: 20px !important;
+  }
+
+  /* Style for product title */
+  .slider-product-card .product-info h1 {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  /* Style for product price */
+  .slider-product-card .product-info p {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  /* Hide large screen navigation arrows on smaller screens */
+  @media screen and (max-width: 992px) {
+    .lg-slider-nav {
+      display: none !important;
+    }
+  }
+
+  /* Show mobile navigation arrows on smaller screens */
+  @media screen and (max-width: 992px) {
     .nav-arrow-mobile {
-      display: none;
-    }
-
-    /* Style for the product images */
-    .product-image {
-      min-height: 400px;
-      object-fit: cover;
-      max-height: 400px;
-    }
-
-    /* Style for the product cards */
-    .slider-product-card {
-      min-height: 200px;
-      min-width: 200px;
-      margin-right: 10px;
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    /* Style for the product card action buttons */
-    .product-card-action {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding: 10px;
-      align-items: flex-end;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translateX(60px);
-      z-index: 999;
-      transition-duration: 0.5s;
     }
+  }
 
-    /* Show the product card action buttons on hover */
-    .slider-product-card:hover .product-card-action {
-      transform: translateX(0px) !important;
-    }
+  /* Style for the hover image in the product card */
+  .hover-image {
+    position: absolute;
+    transition: 0.5s ease-in-out;
+    z-index: 9;
+    top: 0;
+    opacity: 0;
+  }
 
-    /* Style for the individual action buttons */
-    .product-card-action span {
-      height: 50px;
-      width: 50px;
-      border-radius: 50px;
-      background-color: #fff;
-      padding: 13px;
-      border: 1px solid #e7e8eb;
-      transition: 0.3s;
-      cursor: pointer;
-      box-shadow: 5px 5px 10px #0000001a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  /* Show the hover image on hover */
+  .slider-product-card:hover .hover-image {
+    opacity: 1;
+  }
 
-    /* Style for the icons inside the action buttons */
-    .product-card-action span i {
-      color: #888;
-      margin-top: -4px;
-    }
+  /* Modal container style */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
 
-    /* Hover effect for the action buttons */
-    .product-card-action span:hover {
-      background-color: #70d1b7;
-    }
+  /* Show modal class */
+  .modal.show {
+    display: block;
+    opacity: 1;
+  }
 
-    /* Hover effect for the icons inside the action buttons */
-    .product-card-action span:hover i {
-      color: #fff;
-    }
+  /* Modal content style */
+  .modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 20px;
+    min-height: 80vh;
+    border-radius: 8px;
+    width: 72%;
+    max-width: 1320px;
+    transition: transform 0.4s ease;
+    transform: translateY(-30px);
+  }
 
-    /* Hover effect for SVG path inside the action buttons */
-    .product-card-action span:hover span svg path {
-      fill: #fff !important;
-      stroke: #fff !important;
-    }
+  /* Show modal content class */
+  .modal.show .modal-content {
+    transform: translateY(0);
+  }
 
-    /* Style for the Add to Cart button container */
-    .add-to-cart {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-    }
-
-    /* Style for the Add to Cart link */
-    .add-to-cart a {
-      width: 90%;
-      padding: 10px;
-      background-color: #000;
-      border-radius: 0px;
-      display: inline-block;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
-      text-align: center;
-      font-weight: 600;
-      font-size: 12px;
-      margin-top: -60px;
-      margin-bottom: 24px;
-      opacity: 0;
-      transition: 0.5s;
-      z-index: 999;
-    }
-
-    /* Hover effect for the Add to Cart link */
-    .add-to-cart a:hover {
-      background-color: #70d1b7;
-    }
-
-    /* Show the Add to Cart button on hover */
-    .slider-product-card:hover .add-to-cart a {
-      opacity: 1;
-    }
-
-    /* Adjust the spacing between slick slides */
-    .slick-slide {
-      margin-right: 20px !important;
-    }
-
-    /* Style for product title */
-    .slider-product-card .product-info h1 {
-      font-size: 18px;
-      font-weight: 500;
-    }
-
-    /* Style for product price */
-    .slider-product-card .product-info p {
-      font-size: 14px;
-      font-weight: 400;
-    }
-
-    /* Hide large screen navigation arrows on smaller screens */
-    @media screen and (max-width: 992px) {
-      .lg-slider-nav {
-        display: none !important;
-      }
-    }
-
-    /* Show mobile navigation arrows on smaller screens */
-    @media screen and (max-width: 992px) {
-      .nav-arrow-mobile {
-        display: flex;
-      }
-    }
-
-    /* Style for the hover image in the product card */
-    .hover-image {
-      position: absolute;
-      transition: 0.5s ease-in-out;
-      z-index: 9;
-      top: 0;
-      opacity: 0;
-    }
-
-    /* Show the hover image on hover */
-    .slider-product-card:hover .hover-image {
-      opacity: 1;
-    }
-
-    /* Modal container style */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-
-    /* Show modal class */
-    .modal.show {
-      display: block;
-      opacity: 1;
-    }
-
-    /* Modal content style */
-    .modal-content {
-      background-color: #fff;
-      margin: auto;
-      padding: 20px;
-      min-height: 80vh;
-      border-radius: 8px;
-      width: 72%;
-      max-width: 1320px;
-      transition: transform 0.4s ease;
-      transform: translateY(-30px);
-    }
-
-    /* Show modal content class */
-    .modal.show .modal-content {
-      transform: translateY(0);
-    }
-
-    /* Close button style */
-    .close {
-      font-size: 28px;
-      height: 40px;
-      width: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: #fff;
-      border-radius: 50px;
-      top: -40px;
-      right: -40px;
-      position: absolute;
-      line-height: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .quick-view-slider .slick-next,
-    .quick-view-slider .slick-prev  {
-        background: #70d1b7;
-        height: 40px;
-        width: 40px;
-        border-radius: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-    }
-    .quick-view-slider .slick-next:hover,
-    .quick-view-slider .slick-prev:hover{
-      background: #25a382;
-    }
-    .quick-view-slider .slick-next{
-      right: 0px;
-    }
-    .quick-view-slider .slick-prev{
-      left: 0px;
-    }
-    .slick-next:before , .slick-prev::before {
-        margin-bottom: -4px;
-    }
-    .quick-view-slider .slick-slide{
-      margin: 10px !important;
-    }
-    .modal .placeholder{
-      min-height: 3em;
-      margin-bottom: 20px;
-    }
+  /* Close button style */
+  .close {
+    font-size: 28px;
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+    border-radius: 50px;
+    top: -40px;
+    right: -40px;
+    position: absolute;
+    line-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .quick-view-slider .slick-next,
+  .quick-view-slider .slick-prev {
+    background: #70d1b7;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+  .quick-view-slider .slick-next:hover,
+  .quick-view-slider .slick-prev:hover {
+    background: #25a382;
+  }
+  .quick-view-slider .slick-next {
+    right: 0px;
+  }
+  .quick-view-slider .slick-prev {
+    left: 0px;
+  }
+  .slick-next:before,
+  .slick-prev::before {
+    margin-bottom: -4px;
+  }
+  .quick-view-slider .slick-slide {
+    margin: 10px !important;
+  }
+  .modal .placeholder {
+    min-height: 3em;
+    margin-bottom: 20px;
+  }
+  .add-to-cart-btn {
+    width: 100%;
+    min-height: 45px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+  }
 </style>
 
 <div class="container mt-5">
@@ -442,13 +450,18 @@
         <div class="add-to-cart-container d-flex flex-column">
           <small>Quantity:</small>
           <div class="select-quanity">
-            <div class="row">
-              <div class="col-lg-3 mr-3 border rounded d-flex justify-content-between align-items-center" style="min-height: 45px;">
+            <div class="row" style="padding-left:10px;">
+              <div
+                class="col-lg-3 mr-3 border rounded d-flex justify-content-between align-items-center"
+                style="min-height: 45px;"
+              >
                 <i class="bi bi-plus"></i>
                 <p class="m-0">1</p>
                 <i class="bi bi-dash"></i>
               </div>
-              <div class="col-lg-9"></div>
+              <div class="col-lg-9">
+                <a href="#" class="add-to-cart-btn">ADD TO CART</a>
+              </div>
             </div>
           </div>
         </div>
