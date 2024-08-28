@@ -461,9 +461,6 @@
           <span class="placeholder col-6" style="height: 50px;"></span>
           <span class="placeholder col-6" style="height: 50px;"></span>
         </div>
-        <p id="modal-details">
-          <span class="placeholder col-12"></span>
-        </p>
 
         <div class="add-to-cart-container d-flex flex-column">
           <small>Quantity:</small>
@@ -579,7 +576,6 @@
         success: function (data) {
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
-          $('#modal-details').html(data.description);
 
           if (data.images && data.images.length > 0) {
             // Clear existing content
