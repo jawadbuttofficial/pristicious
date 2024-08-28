@@ -586,13 +586,8 @@
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
 
-          // Handle product price
-          // if (data.price && data.compare_at_price) {
-          //   $('#orignal-price').text(Shopify.formatMoney(data.compare_at_price));
-          //   $('#sale-price').text(Shopify.formatMoney(data.price));
-          // } else {
-          //   $('#product-orignal-price').html(Shopify.formatMoney(data.price));
-          // }
+          // Render product options as radio buttons
+          renderProductOptions(data);
 
           if (data.images && data.images.length > 0) {
             // Clear existing content
@@ -628,27 +623,35 @@
             // Handle case when there are no images
             $('.image-container').html('<p>No images available.</p>');
           }
+
+          // Add to Cart button event
           $('.add-to-cart-btn')
             .off('click')
             .on('click', function () {
+              const selectedVariantId = getSelectedVariantId(data.variants);
               const quantity = parseInt($('.select-quanity .m-0').text());
-              $.ajax({
-                type: 'POST',
-                url: '/cart/add.js',
-                data: {
-                  quantity: quantity,
-                  id: data.variants[0].id, // Add the first variant to the cart
-                },
-                dataType: 'json',
-                success: function () {
-                  alert('Product added to cart!');
-                },
-                error: function () {
-                  alert('Error adding product to cart.');
-                },
-              });
+              if (selectedVariantId) {
+                $.ajax({
+                  type: 'POST',
+                  url: '/cart/add.js',
+                  data: {
+                    quantity: quantity,
+                    id: selectedVariantId, // Add the selected variant to the cart
+                  },
+                  dataType: 'json',
+                  success: function () {
+                    alert('Product added to cart!');
+                  },
+                  error: function () {
+                    alert('Error adding product to cart.');
+                  },
+                });
+              } else {
+                alert('Please select all options.');
+              }
             });
-          // Handle View Detail button
+
+          // View Detail button event
           $('.view-detail-btn').attr('href', '/products/' + data.handle);
         },
         error: function () {
@@ -658,6 +661,57 @@
         },
       });
     });
+
+    // Function to render product options as radio buttons
+    function renderProductOptions(product) {
+      const optionsContainer = $('.product-options');
+      optionsContainer.html(''); // Clear any existing options
+
+      product.options.forEach(function (option, index) {
+        const optionName = option.name;
+        const optionValues = option.values;
+
+        // Create an option group div
+        const optionGroup = $('<div></div>').addClass('option-group').attr('data-option-index', index);
+
+        // Add label
+        optionGroup.append('<label>' + optionName + '</label>');
+
+        // Add radio buttons for each option value
+        optionValues.forEach(function (value) {
+          const radioInput = `
+            <label>
+              <input type="radio" name="option-${index}" value="${value}">
+              ${value}
+            </label>
+          `;
+          optionGroup.append(radioInput);
+        });
+
+        // Append the option group to the options container
+        optionsContainer.append(optionGroup);
+      });
+    }
+
+    // Function to get the selected variant ID based on the selected options
+    function getSelectedVariantId(variants) {
+      const selectedOptions = [];
+      $('.option-group').each(function () {
+        const selectedOptionValue = $(this).find('input[type="radio"]:checked').val();
+        if (selectedOptionValue) {
+          selectedOptions.push(selectedOptionValue);
+        }
+      });
+
+      // Find the matching variant based on selected options
+      const matchingVariant = variants.find(function (variant) {
+        return variant.options.every(function (optionValue, index) {
+          return optionValue === selectedOptions[index];
+        });
+      });
+
+      return matchingVariant ? matchingVariant.id : null;
+    }
 
     // Function to reset modal content to placeholders
     function resetModal() {
