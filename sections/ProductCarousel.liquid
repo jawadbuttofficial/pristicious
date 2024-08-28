@@ -583,19 +583,10 @@
         success: function (data) {
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
-
-          // Handle product price
-          if (data.price && data.compare_at_price) {
-            $('#orignal-price').text(Shopify.formatMoney(data.compare_at_price));
-            $('#sale-price').text(Shopify.formatMoney(data.price));
-          } else {
-            $('#product-orignal-price').text(Shopify.formatMoney(data.price));
-          }
-
           $('#modal-details').html(data.description);
 
-          // Handle product images
           if (data.images && data.images.length > 0) {
+            // Clear existing content
             $('.image-container').html('');
 
             if (data.images.length > 1) {
@@ -628,29 +619,6 @@
             // Handle case when there are no images
             $('.image-container').html('<p>No images available.</p>');
           }
-
-          // Handle Add to Cart functionality
-          $('.add-to-cart-btn').off('click').on('click', function () {
-            const quantity = parseInt($('.select-quanity .m-0').text());
-            $.ajax({
-              type: 'POST',
-              url: '/cart/add.js',
-              data: {
-                quantity: quantity,
-                id: data.variants[0].id // Add the first variant to the cart
-              },
-              dataType: 'json',
-              success: function () {
-                alert('Product added to cart!');
-              },
-              error: function () {
-                alert('Error adding product to cart.');
-              }
-            });
-          });
-
-          // Handle View Detail button
-          $('.view-detail-btn').attr('href', '/products/' + data.handle);
         },
         error: function () {
           // Handle errors
