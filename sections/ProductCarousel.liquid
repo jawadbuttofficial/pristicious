@@ -690,8 +690,8 @@
         // Add radio buttons for each option value
         optionValues.forEach(function (value) {
           const radioInput = `
-            <label>
-              <input type="radio" class="option-value" name="option-${index}" value="${value}">
+            <label class="option-value">
+              <input type="radio" name="option-${index}" value="${value}">
               ${value}
             </label>
           `;
