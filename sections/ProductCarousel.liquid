@@ -316,6 +316,8 @@
     align-items: center;
     text-decoration: none;
     font-weight: 700;
+    border: none;
+    outline: none;
   }
   .add-to-cart-btn:hover {
     background-color: #25a382;
@@ -481,7 +483,7 @@
                 <i id="plus-icon" class="bi bi-plus"></i>
               </div>
               <div class="col-lg-9">
-                <button href="" class="add-to-cart-btn">ADD TO CART</button>
+                <button class="add-to-cart-btn">ADD TO CART</button>
               </div>
             </div>
           </div>
@@ -581,8 +583,17 @@
         url: '/products/' + productTitle + '.js', // Use the product handle to fetch the data
         dataType: 'json',
         success: function (data) {
+
           // Populate the modal with the product details
           $('#modal-title').text(data.title);
+
+          // Handle product price
+          if (data.price && data.compare_at_price) {
+            $('#orignal-price').text(Shopify.formatMoney(data.compare_at_price));
+            $('#sale-price').text(Shopify.formatMoney(data.price));
+          } else {
+            $('#product-orignal-price').text(Shopify.formatMoney(data.price));
+          }
 
           if (data.images && data.images.length > 0) {
             // Clear existing content
