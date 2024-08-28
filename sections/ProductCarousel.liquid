@@ -316,12 +316,12 @@
     align-items: center;
     text-decoration: none;
     font-weight: 700;
-}
-.add-to-cart-btn:hover{
-  background-color: #25a382;
-}
-.view-detail-btn{
-  width: 100%;
+  }
+  .add-to-cart-btn:hover {
+    background-color: #25a382;
+  }
+  .view-detail-btn {
+    width: 100%;
     min-height: 45px;
     background-color: #25a382;
     color: #fff;
@@ -332,8 +332,7 @@
     text-decoration: none;
     font-weight: 700;
     margin-top: 10px;
-}
-
+  }
 </style>
 
 <div class="container mt-5">
@@ -470,9 +469,9 @@
                 class="col-lg-3 mr-3 border rounded d-flex justify-content-between align-items-center"
                 style="min-height: 45px;"
               >
-                <i class="bi bi-plus"></i>
-                <p class="m-0">1</p>
-                <i class="bi bi-dash"></i>
+                <i id="plus-icon" class="bi bi-plus"></i>
+                <p id="quantity" class="m-0">1</p>
+                <i id="minus-icon" class="bi bi-dash"></i>
               </div>
               <div class="col-lg-9">
                 <a href="#" class="add-to-cart-btn">ADD TO CART</a>
@@ -518,6 +517,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     const wishlistButtons = document.querySelectorAll('.add-to-wishlist');
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const $quantityElement = $('#quantity');
 
     // Highlight wishlist items that are already in the wishlist
     wishlistButtons.forEach((button) => {
@@ -611,24 +611,26 @@
             // Handle case when there are no images
             $('.image-container').html('<p>No images available.</p>');
           }
-          $('.add-to-cart-btn').off('click').on('click', function () {
-            const quantity = parseInt($('.select-quanity .m-0').text());
-            $.ajax({
-              type: 'POST',
-              url: '/cart/add.js',
-              data: {
-                quantity: quantity,
-                id: data.variants[0].id // Add the first variant to the cart
-              },
-              dataType: 'json',
-              success: function () {
-                alert('Product added to cart!');
-              },
-              error: function () {
-                alert('Error adding product to cart.');
-              }
+          $('.add-to-cart-btn')
+            .off('click')
+            .on('click', function () {
+              const quantity = parseInt($('.select-quanity .m-0').text());
+              $.ajax({
+                type: 'POST',
+                url: '/cart/add.js',
+                data: {
+                  quantity: quantity,
+                  id: data.variants[0].id, // Add the first variant to the cart
+                },
+                dataType: 'json',
+                success: function () {
+                  alert('Product added to cart!');
+                },
+                error: function () {
+                  alert('Error adding product to cart.');
+                },
+              });
             });
-          });
         },
         error: function () {
           // Handle errors
@@ -666,6 +668,22 @@
           modal.css('display', 'none');
           resetModal(); // Reset modal content
         }, 400);
+      }
+    });
+
+    // Handle increment
+    $('#plus-icon').on('click', function () {
+      let currentQuantity = parseInt($quantityElement.text());
+      currentQuantity++;
+      $quantityElement.text(currentQuantity);
+    });
+
+    // Handle decrement
+    $('#minus-icon').on('click', function () {
+      let currentQuantity = parseInt($quantityElement.text());
+      if (currentQuantity > 1) {
+        currentQuantity--;
+        $quantityElement.text(currentQuantity);
       }
     });
   });
