@@ -345,6 +345,13 @@
   .option-lable{
     display: block;
   }
+  .option-value{
+    padding: 10px;
+    background-color: #f5f5f5;
+    margin-right: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 </style>
 
 <div class="container mt-5">
@@ -684,7 +691,7 @@
         optionValues.forEach(function (value) {
           const radioInput = `
             <label>
-              <input type="radio" name="option-${index}" value="${value}">
+              <input type="radio" class="option-value" name="option-${index}" value="${value}">
               ${value}
             </label>
           `;
