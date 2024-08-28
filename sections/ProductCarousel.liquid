@@ -706,13 +706,22 @@
         optionsContainer.append(optionGroup);
       });
     }
-    $('.product-options').on('change', 'input.option-value-radio', function () {
-      // Remove the class from all labels
+
+    function updateOptionStyles() {
+      // Remove the 'selected' class from all option labels
       $('.option-value').removeClass('selected');
 
-      // Add the class to the selected option's label
-      $(this).closest('label.option-value').addClass('selected');
+      // Add the 'selected' class to the label of the currently selected radio button
+      $('input.option-value-radio:checked').each(function () {
+        $(this).closest('label.option-value').addClass('selected');
+      });
+    }
+
+    // Attach the function to the 'change' event of the radio buttons
+    $('.product-options').on('change', 'input.option-value-radio', function () {
+      updateOptionStyles();
     });
+
     // Function to get the selected variant ID based on the selected options
     function getSelectedVariantId(variants) {
       const selectedOptions = [];
